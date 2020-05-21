@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Trial Balance - Eloquent IFRS</title>
+  <title>Aging Schedule - Eloquent IFRS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="icon" type="image/png" href="https://ekmungai.github.io/ifrs-docs/images/favicon32.png" sizes="32x32" />
@@ -210,7 +210,7 @@
     </li>
     
 	
-    <li class="">
+    <li class="active ">
       <a href="https://ekmungai.github.io/ifrs-docs/docs/aging-schedule/">Aging Schedule</a>
     </li>
     
@@ -225,7 +225,7 @@
     </li>
     
 	
-    <li class="active ">
+    <li class="">
       <a href="https://ekmungai.github.io/ifrs-docs/docs/trial-balance/">Trial Balance</a>
     </li>
     
@@ -236,30 +236,25 @@
         </div>
         <div class="col-12 col-md-9">
           
-<h1 class="title">Trial Balance</h1>
+<h1 class="title">Aging Schedule</h1>
 <div class="content ">
-  <p>The Trial Balance is a listing of all accounts in the chart of accounts, grouped by whether they belong to the Income Statement or Balance which compares their debit and credit balances. The debit and credit sides of this report must always be in agreement.</p>
+  <p>The Aging Schedule shows amounts receivable frome clients and payable to suppliers categorized by how long they have been outstanding. The time period brackets can be configured to any arbitrary number of days each. (See <a href="/ifrs-docs/docs/configuration/">Configuration</a>).</p>
 <h3 id="construction">Construction</h3>
-<p>An TrialBalance</p>
+<p>An AgingSchedule constructor takes the following parameters:</p>
 <ul>
-<li><code>$year</code>: The year for which account balances should be included in the report. Defaults to the current year.</li>
+<li><code>$accountType</code>: The type of account to retrieve outstanding balances for. Defaults to <code>Account::RECEIVABLE</code>.</li>
+<li><code>$currencyId</code>: The it of the currency object whose transactions should be included in the report. Defaults to the id of the Entity&rsquo;s reporting currency.</li>
+<li><code>$endDate</code>: The last date on which outstanding balances should be included in the report. Defaults to the current date.</li>
 </ul>
 <h3 id="attributes">Attributes</h3>
 <ul>
-<li><code>$trialBalance-&gt;entity</code>: The Entity object associated with the report.</li>
-<li><code>$trialBalance-&gt;reportingPeriod</code>: The ReportingPeriod object associated with the report.</li>
-<li><code>$trialBalance-&gt;balances</code>: The credit and debit balances for the report.</li>
-<li><code>$trialBalance-&gt;accounts</code>: An array of the accounts included in the report grouped by their categories.</li>
+<li><code>$incomeStatement-&gt;entity</code>: The Entity object associated with the report.</li>
+<li><code>$incomeStatement-&gt;balances</code>: The total outstanding balances in the time segments in the report.</li>
+<li><code>$incomeStatement-&gt;accounts</code>: An array of the accounts included in the report with thier contribution to the outstanding balances in the time segments in the report.</li>
 </ul>
 <h3 id="methods">Methods</h3>
 <ul>
-<li><code>$trialBalance-&gt;toString():</code> Prints out a summarized version of the report as a string. !!IMPORTANT!! this method is only intended for debugging and should never be used for production.</li>
-<li><code>$trialBalance-&gt;getSections():</code> Retrieves the balances of the sections of the report, grouped by the categories therein.</li>
-<li><code>$trialBalance-&gt;attributes():</code> Presents the report&rsquo;s attributes as an array. Useful for debugging.</li>
-</ul>
-<h3 id="constants">Constants</h3>
-<ul>
-<li><code>TrialBalance::TITLE</code>: The title of the report. Defaults to Trial Balance.</li>
+<li><code>$incomeStatement-&gt;attributes():</code> Presents the report&rsquo;s attributes as an array. Useful for debugging.</li>
 </ul>
 
 </div>

@@ -171,6 +171,15 @@ Attributes  name: The name of the category category_type: The category type must
     </item>
     
     <item>
+      <title>Aging Schedule</title>
+      <link>https://ekmungai.github.io/ifrs-docs/docs/aging-schedule/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/docs/aging-schedule/</guid>
+      <description>The Aging Schedule shows amounts receivable frome clients and payable to suppliers categorized by how long they have been outstanding. The time period brackets can be configured to any arbitrary number of days each.</description>
+    </item>
+    
+    <item>
       <title>Income Statement</title>
       <link>https://ekmungai.github.io/ifrs-docs/docs/income-statement/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>

@@ -211,6 +211,11 @@
     
 	
     <li class="">
+      <a href="https://ekmungai.github.io/ifrs-docs/docs/aging-schedule/">Aging Schedule</a>
+    </li>
+    
+	
+    <li class="">
       <a href="https://ekmungai.github.io/ifrs-docs/docs/income-statement/">Income Statement</a>
     </li>
     
@@ -244,6 +249,8 @@
 <p>Names do not always follow the object type however, for instance the name for a <code>Transaction::IN</code> is <em>Client Invoice</em> and that for <code>Transaction::JN</code> is <em>Journal Entry</em> so you should always check the configuration file to be sure.</p>
 <h3 id="account-codes">Account Codes</h3>
 <p>Account codes are the numerical representation of the Account object type. Some countries have a reccommended scheme for allocating account codes that is aimed at improving the comparability between financial reports of different entities. For example, revenue accounts codes are numbers between 4000 and 5000 according to the German SKR04 scheme. A default scheme is included in the configuration file.</p>
+<h3 id="aging-schedule-brackets">Aging Schedule Brackets</h3>
+<p>These are the time chunks into which the outstanding balances for client receivables and supplier paybles are split. A default segmentation is included in the configuration file.</p>
 <h3 id="ledger-hashing-algorithm">Ledger Hashing Algorithm</h3>
 <p>Eloquent IFRS hashes the contents of the Ledger to maintain transactional integrity. The algorithm used for this process can be set by changing the value of <code>hashing_algorithm</code>. This value defaults to PHP&rsquo;s internal <code>PASSWORD_DEFAULT</code></p>
 <hr>
