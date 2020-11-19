@@ -215,5 +215,23 @@ Attributes  name: The name of the category type: The category type must be one o
       <description>The Trial Balance is a listing of all accounts in the chart of accounts, grouped by whether they belong to the Income Statement or Balance which compares their debit and credit balances.</description>
     </item>
     
+    <item>
+      <title>Sales Cycle</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/sales-cycle/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/sales-cycle/</guid>
+      <description>The sales cycle relates to the process through which a company records transactions dealing with customers. These include Sales, discounts, and receipts. This Example handles each of the cases described above.</description>
+    </item>
+    
+    <item>
+      <title>Purchase Cycle</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/purchase-cycle/</link>
+      <pubDate>Sat, 02 May 2020 14:14:53 +0200</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/purchase-cycle/</guid>
+      <description>The purchase cycle is the process by which the entity acquires goods and services either as raw material for production or for the purpose of administration. This example will demonstrate A Cash Purchase and a Refund (for goods returned for instance).</description>
+    </item>
+    
   </channel>
 </rss>
