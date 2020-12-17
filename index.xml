@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eloquent IFRS</title>
+    <link>https://ekmungai.github.io/ifrs-docs/</link>
+    <description>Recent content on Eloquent IFRS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Nov 2018 15:14:39 +1000</lastBuildDate>
+    
+	<atom:link href="https://ekmungai.github.io/ifrs-docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Release Notes</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/release-notes/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/release-notes/</guid>
+      <description>Eloquent-IFRS 3.0 brings several major changes in the codebase to enable support for the Cash Flow Statement, as well as refactoring the relationships between Currencies, Entities and Users to broaden the range of commercial environments it can be deployed to.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/installation/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/installation/</guid>
+      <description>Requirements Eloquent IFRS requries php version 7.2 and Laravel or Lumen version 5.0 and above
+Installation Use composer to Install the package into your application.
+composer require &amp;#34;ekmungai/eloquent-ifrs&amp;#34;composer install --no-devThen run migrations to create the database tables.</description>
+    </item>
+    
+    <item>
+      <title>Configuration</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/configuration/</link>
+      <pubDate>Mon, 11 Feb 2019 19:30:08 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/configuration/</guid>
+      <description>Default Configuration The package installs with the default settings as regards the names of Accounts/Transactions Types, Report Titles and Section names as well as Accounts Codes. To adjust these settings use the Laravel artisan publish command to install the ifrs configuration to your applications config folder where you can edit it.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/installation/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/installation/</guid>
+      <description>Requirements Eloquent IFRS requries php version 7.2 and Eloquent 6.0 and above
+Installation Use composer to Install the package into your application.
+composer require &amp;#34;ekmungai/eloquent-ifrs&amp;#34;composer install --no-devThen run migrations to create the database tables.</description>
+    </item>
+    
+    <item>
+      <title>Configuration</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/configuration/</link>
+      <pubDate>Mon, 11 Feb 2019 19:30:08 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/configuration/</guid>
+      <description>Default Configuration The package installs with the default settings as regards the names of Accounts/Transactions Types, Report Titles and Section names as well as Accounts Codes. To adjust these settings use the Laravel artisan publish command to install the ifrs configuration to your applications config folder where you can edit it.</description>
+    </item>
+    
+    <item>
+      <title>Users</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/users/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/users/</guid>
+      <description>Eloquent IFRS relies on authenticated users to identify the entity to which transactions belong. As such, there must be at least one registered user before the package can be used.</description>
+    </item>
+    
+    <item>
+      <title>Currencies</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/currencies/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/currencies/</guid>
+      <description>The International Financial Reporting Standards require that every reporing entity disclose the Currency in which it is reporting. Currencies in the package are independent of entities and can be created seperately.</description>
+    </item>
+    
+    <item>
+      <title>Users</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/users/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/users/</guid>
+      <description>Eloquent IFRS relies on authenticated users to identify the entity to which transactions belong. As such, there must be at least one registered user before the package can be used.</description>
+    </item>
+    
+    <item>
+      <title>Currencies</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/currencies/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/currencies/</guid>
+      <description>The International Financial Reporting Standards require that every reporing entity disclose the Currency in which it is reporting. Currencies in the package are independent of entities and can be created seperately.</description>
+    </item>
+    
+    <item>
+      <title>Entities</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/entities/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/entities/</guid>
+      <description>The entity is the centerpiece around which the transactions in the package are recorded and for which reports are generated. All models with the exception of User and Currency are scoped to a particular entity.</description>
+    </item>
+    
+    <item>
+      <title>Entities</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/entities/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/entities/</guid>
+      <description>The entity is the centerpiece around which the transactions in the package are recorded and for which reports are generated. All models with the exception of User and Currency are scoped to a particular entity.</description>
+    </item>
+    
+    <item>
+      <title>Reporting Periods</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/reporting-periods/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/reporting-periods/</guid>
+      <description>Reporting periods corresponds to the financial years of the entity&amp;rsquo;s operations. They are used to identify reports generated by the package.
+Attributes  period_count: The period count is an integer that indicates the number of periods the entity has been in operation.</description>
+    </item>
+    
+    <item>
+      <title>Balances</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/balances/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/balances/</guid>
+      <description>Balances represent amounts on Balance Sheet accounts carried over from previous reporting periods. Consequently there can only be Balance Sheet account balances. Balances provide a way of decoupling reports between different reporting periods from each other.</description>
+    </item>
+    
+    <item>
+      <title>Reporting Periods</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/reporting-periods/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/reporting-periods/</guid>
+      <description>Reporting periods corresponds to the financial years of the entity&amp;rsquo;s operations. They are used to identify reports generated by the package.
+Attributes  period_count: The period count is an integer that indicates the number of periods the entity has been in operation.</description>
+    </item>
+    
+    <item>
+      <title>Balances</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/balances/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/balances/</guid>
+      <description>Balances represent amounts on Balance Sheet accounts carried over from previous reporting periods. Consequently there can only be Balance Sheet account balances. Balances provide a way of decoupling reports between different reporting periods from each other.</description>
+    </item>
+    
+    <item>
+      <title>Exchange Rates</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/exchange-rates/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/exchange-rates/</guid>
+      <description>If the entity engages in foreign currency transactions, the relative value between the different currencies is managed via exchange rates.
+Attributes  valid_from: The date from which the exchange rate is valid.</description>
+    </item>
+    
+    <item>
+      <title>Exchange Rates</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/exchange-rates/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/exchange-rates/</guid>
+      <description>If the entity engages in foreign currency transactions, the relative value between the different currencies is managed via exchange rates.
+Attributes  valid_from: The date from which the exchange rate is valid.</description>
+    </item>
+    
+    <item>
+      <title>VAT</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/vat/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/vat/</guid>
+      <description>Value Added Taxes are levies imposed by governments on businesses operating within their jurisdictions. Most Jurisdictions define both an Output (Sales) VAT as well as an Input (Purchase) VAT.
+Attributes  name: The name of the vat object.</description>
+    </item>
+    
+    <item>
+      <title>Recycling</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/recycling/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/recycling/</guid>
+      <description>Recycling referes to the temporary deletion and subsequent restoration of objects in the package. All objects in the package are recyclable. Recycled objects may also be permanently destroyed, but this action does not no remove them from the database but instead only marks them as having been destroyed.</description>
+    </item>
+    
+    <item>
+      <title>VAT</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/vat/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/vat/</guid>
+      <description>Value Added Taxes are levies imposed by governments on businesses operating within their jurisdictions. Most Jurisdictions define both an Output (Sales) VAT as well as an Input (Purchase) VAT.
+Attributes  name: The name of the vat object.</description>
+    </item>
+    
+    <item>
+      <title>Accounts</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/accounts/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/accounts/</guid>
+      <description>Accounts are records in the General Ledger that agreggate the transactions relating to a financial aspect of the entity. The types of accounts in the package follow the classifications requied to produce reports compatible with the IFRS.</description>
+    </item>
+    
+    <item>
+      <title>Recycling</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/recycling/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/recycling/</guid>
+      <description>Recycling referes to the temporary deletion and subsequent restoration of objects in the package. All objects in the package are recyclable. Recycled objects may also be permanently destroyed, but this action does not no remove them from the database but instead only marks them as having been destroyed.</description>
+    </item>
+    
+    <item>
+      <title>Accounts</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/accounts/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/accounts/</guid>
+      <description>Accounts are records in the General Ledger that agreggate the transactions relating to a financial aspect of the entity. The types of accounts in the package follow the classifications requied to produce reports compatible with the IFRS.</description>
+    </item>
+    
+    <item>
+      <title>Categories</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/categories/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/categories/</guid>
+      <description>Categories are a means of grouping together several accounts of the same type. This is useful for further subividing the financial reports beyond the classifications defined by IFRS.
+Attributes  name: The name of the category category_type: The category type must be one of the account types defined in Account.</description>
+    </item>
+    
+    <item>
+      <title>Categories</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/categories/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/categories/</guid>
+      <description>Categories are a means of grouping together several accounts of the same type. This is useful for further subividing the financial reports beyond the classifications defined by IFRS.
+Attributes  name: The name of the category type: The category type must be one of the account types defined in Account.</description>
+    </item>
+    
+    <item>
+      <title>Transactions</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/transactions/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/transactions/</guid>
+      <description>Model vs Transaction namespace The Classes in the IFRS\Transactions extend the Transaction class in the IFRS\Models namespace and have validation specific to their types to enforce IFRS classification rules. For example, the main account for a CashSale transaction must be of type Account::BANK.</description>
+    </item>
+    
+    <item>
+      <title>Assignments</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/assignments/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/assignments/</guid>
+      <description>Assignments are the package&amp;rsquo;s mechanism for relating transactions which have opposite effects on an accounts balance with each other. For example, A Client Receipt can be assigned to a Client Invoice, thereby clearing it either partially or fully.</description>
+    </item>
+    
+    <item>
+      <title>Transactions</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/transactions/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/transactions/</guid>
+      <description>Model vs Transaction namespace The Classes in the IFRS\Transactions extend the Transaction class in the IFRS\Models namespace and have validation specific to their types to enforce IFRS classification rules. For example, the main account for a CashSale transaction must be of type Account::BANK.</description>
+    </item>
+    
+    <item>
+      <title>Assignments</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/assignments/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/assignments/</guid>
+      <description>Assignments are the package&amp;rsquo;s mechanism for relating transactions which have opposite effects on an accounts balance with each other. For example, A Client Receipt can be assigned to a Client Invoice, thereby clearing it either partially or fully.</description>
+    </item>
+    
+    <item>
+      <title>Line Items</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/line-items/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/line-items/</guid>
+      <description>Line Items constitute the second part of the double entry after transactions establish the first part. A transaction can have multiple line items each with a different account, vat and amount.</description>
+    </item>
+    
+    <item>
+      <title>Account Statements</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/statements/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/statements/</guid>
+      <description>Account Statements are chronological records of transactions that have been posted to an account and their effects on its balance. Statements can be created for all accounts in the chart.</description>
+    </item>
+    
+    <item>
+      <title>Line Items</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/line-items/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/line-items/</guid>
+      <description>Line Items constitute the second part of the double entry after transactions establish the first part. A transaction can have multiple line items each with a different account, vat and amount.</description>
+    </item>
+    
+    <item>
+      <title>Account Schedules</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/schedules/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/schedules/</guid>
+      <description>Account Schedules are similar to statements in that the present chronological records of transactions that have been posted to an account, the difference being that only transactions with outstanding balances, i.</description>
+    </item>
+    
+    <item>
+      <title>Account Statements</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/statements/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/statements/</guid>
+      <description>Account Statements are chronological records of transactions that have been posted to an account and their effects on its balance. Statements can be created for all accounts in the chart.</description>
+    </item>
+    
+    <item>
+      <title>Account Schedules</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/schedules/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/schedules/</guid>
+      <description>Account Schedules are similar to statements in that the present chronological records of transactions that have been posted to an account, the difference being that only transactions with outstanding balances, i.</description>
+    </item>
+    
+    <item>
+      <title>Aging Schedule</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/aging-schedule/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/aging-schedule/</guid>
+      <description>The Aging Schedule shows amounts receivable frome clients and payable to suppliers categorized by how long they have been outstanding. The time period brackets can be configured to any arbitrary number of days each.</description>
+    </item>
+    
+    <item>
+      <title>Income Statement</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/income-statement/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/income-statement/</guid>
+      <description>The Income Statement, also known as the Profit and Loss statement shows the performance of the entity by subtracting the combined balances of expense accounts from that of income accounts. The end result is the profit made by the entity for the given period.</description>
+    </item>
+    
+    <item>
+      <title>Aging Schedule</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/aging-schedule/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/aging-schedule/</guid>
+      <description>The Aging Schedule shows amounts receivable frome clients and payable to suppliers categorized by how long they have been outstanding. The time period brackets can be configured to any arbitrary number of days each.</description>
+    </item>
+    
+    <item>
+      <title>Balance Sheet</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/balance-sheet/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/balance-sheet/</guid>
+      <description>The Balance Sheet, also known as the Statement of Financial position shows the financial health of the entity by comparing the combined balances of asset accounts to those of liability and equity accounts.</description>
+    </item>
+    
+    <item>
+      <title>Income Statement</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/income-statement/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/income-statement/</guid>
+      <description>The Income Statement, also known as the Profit and Loss statement shows the performance of the entity by subtracting the combined balances of expense accounts from that of income accounts. The end result is the profit made by the entity for the given period.</description>
+    </item>
+    
+    <item>
+      <title>Trial Balance</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/trial-balance/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/trial-balance/</guid>
+      <description>The Trial Balance is a listing of all accounts in the chart of accounts, grouped by whether they belong to the Income Statement or Balance which compares their debit and credit balances.</description>
+    </item>
+    
+    <item>
+      <title>Balance Sheet</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/balance-sheet/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/balance-sheet/</guid>
+      <description>The Balance Sheet, also known as the Statement of Financial position shows the financial health of the entity by comparing the combined balances of asset accounts to those of liability and equity accounts.</description>
+    </item>
+    
+    <item>
+      <title>Trial Balance</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/trial-balance/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/trial-balance/</guid>
+      <description>The Trial Balance is a listing of all accounts in the chart of accounts, grouped by whether they belong to the Income Statement or Balance which compares their debit and credit balances.</description>
+    </item>
+    
+    <item>
+      <title>API Documentation</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v2docs/api/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v2docs/api/</guid>
+      <description>Documentation for version 2 of the Package can be found here.
+ </description>
+    </item>
+    
+    <item>
+      <title>Sales Cycle</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/sales-cycle/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/sales-cycle/</guid>
+      <description>The sales cycle relates to the process through which a company records transactions dealing with customers. These include Sales, discounts, and receipts. This Example handles each of the cases described above.</description>
+    </item>
+    
+    <item>
+      <title>Purchase Cycle</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/purchase-cycle/</link>
+      <pubDate>Sat, 02 May 2020 14:14:53 +0200</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/purchase-cycle/</guid>
+      <description>The purchase cycle is the process by which the entity acquires goods and services either as raw material for production or for the purpose of administration. This example will demonstrate A Cash Purchase and a Refund (for goods returned for instance).</description>
+    </item>
+    
+  </channel>
+</rss>
