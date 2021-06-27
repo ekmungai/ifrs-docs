@@ -6,11 +6,7 @@
     <description>Recent content in Introduction on Eloquent IFRS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Nov 2018 15:14:39 +1000</lastBuildDate>
-    
-	<atom:link href="https://ekmungai.github.io/ifrs-docs/v3docs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 28 Nov 2018 15:14:39 +1000</lastBuildDate><atom:link href="https://ekmungai.github.io/ifrs-docs/v3docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Release Notes</title>
       <link>https://ekmungai.github.io/ifrs-docs/v3docs/release-notes/</link>
@@ -28,7 +24,7 @@
       <guid>https://ekmungai.github.io/ifrs-docs/v3docs/installation/</guid>
       <description>Requirements Eloquent IFRS requries php version 7.2 and Eloquent 6.0 and above
 Installation Use composer to Install the package into your application.
-composer require &amp;#34;ekmungai/eloquent-ifrs&amp;#34;composer install --no-devThen run migrations to create the database tables.</description>
+composer require &amp;#34;ekmungai/eloquent-ifrs&amp;#34; composer install --no-dev Then run migrations to create the database tables.</description>
     </item>
     
     <item>
@@ -231,6 +227,16 @@ Attributes  name: The name of the category type: The category type must be one o
       
       <guid>https://ekmungai.github.io/ifrs-docs/v3docs/purchase-cycle/</guid>
       <description>The purchase cycle is the process by which the entity acquires goods and services either as raw material for production or for the purpose of administration. This example will demonstrate A Cash Purchase and a Refund (for goods returned for instance).</description>
+    </item>
+    
+    <item>
+      <title>API Documentation</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v3docs/api/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v3docs/api/</guid>
+      <description>Documentation for version 3 of the Package can be found here.
+ </description>
     </item>
     
   </channel>
