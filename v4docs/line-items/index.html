@@ -104,6 +104,8 @@
     
     
     
+    
+    
 
     
     <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
@@ -253,6 +255,11 @@
       <a href="https://ekmungai.github.io/ifrs-docs/v4docs/purchase-cycle/">Purchase Cycle</a>
     </li>
     
+	
+    <li class="">
+      <a href="https://ekmungai.github.io/ifrs-docs/v4docs/compound-journals/">Compound Journal Entries</a>
+    </li>
+    
 	 
 		<li style="line-height:1px" >&nbsp;</li>
 		<li class="sectionheading">API Reference</li>
@@ -279,6 +286,7 @@
 <li><code>account</code>: The Account associated with the line item.</li>
 <li><code>narration</code>: A short discription of the purpose of the line item.</li>
 <li><code>quantity</code>: A multiple to be applied to the amount of the line item.</li>
+<li><code>credited</code>: A boolean indicating whether the line item amount should be posted in the credit side of the account. Only relevant for compound Journal Entries, all other transactions post to the opposite side of the transaction&rsquo;s main account.</li>
 <li><code>amount</code>: The line item amount.</li>
 <li><code>ledgers:</code> Ledger objects associated with the line item.</li>
 <li><code>vat_inclusive:</code> A boolean indicating if the amount of the item includes the vat amount.</li>

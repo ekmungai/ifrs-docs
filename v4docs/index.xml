@@ -231,6 +231,16 @@ Attributes  name: The name of the category type: The category type must be one o
     </item>
     
     <item>
+      <title>Compound Journal Entries</title>
+      <link>https://ekmungai.github.io/ifrs-docs/v4docs/compound-journals/</link>
+      <pubDate>Sat, 02 May 2020 14:14:53 +0200</pubDate>
+      
+      <guid>https://ekmungai.github.io/ifrs-docs/v4docs/compound-journals/</guid>
+      <description>Compound Journal Entries are JournalEntry transactions in which the line items can be posted to arbitrary sides of the ledger. As such, they require a few extra parameters.
+Basic Journal Entry In a normal Journal Entry, all the Line Items are automatically posted to the opposite side of the main account.</description>
+    </item>
+    
+    <item>
       <title>API Documentation</title>
       <link>https://ekmungai.github.io/ifrs-docs/v4docs/api/</link>
       <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>

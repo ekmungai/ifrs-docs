@@ -104,6 +104,8 @@
     
     
     
+    
+    
 
     
     <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
@@ -253,6 +255,11 @@
       <a href="https://ekmungai.github.io/ifrs-docs/v4docs/purchase-cycle/">Purchase Cycle</a>
     </li>
     
+	
+    <li class="">
+      <a href="https://ekmungai.github.io/ifrs-docs/v4docs/compound-journals/">Compound Journal Entries</a>
+    </li>
+    
 	 
 		<li style="line-height:1px" >&nbsp;</li>
 		<li class="sectionheading">API Reference</li>
@@ -284,6 +291,8 @@
 <li><code>transaction_no</code>: The transaction number of the transaction. Defaults to a serially generated number of the form <code>TTYY/XXXXX</code>, where <code>TT</code> represents the transaction type, <code>YY</code> is the period count for the reporting period in which the transaction date falls, and <code>XXXXX</code>is a zero padded count of previously recorded transactions of the same type.</li>
 <li><code>type</code>: The two character string representing the transaction type as defined by the Transaction class. (See <a href="#constants">Constants</a>).</li>
 <li><code>credited</code>: A boolean indicating whether the transaction should be posted in the credit side of the main account.</li>
+<li><code>compound</code>: A boolean indicating whether the (Journal Entry) transaction has compound entries.</li>
+<li><code>main_account_amount</code>: For compound Journal Entry transactions, this is the amount to be posted to the main account.</li>
 <li><code>entity</code>: The Entity associated with the transaction. Defaults to the entity of the logged in user.</li>
 <li><code>ledgers</code>: The Ledger objects associated with the transaction.</li>
 <li><code>assignments</code>: Transactions that have been cleared by (assigned to) this transaction.</li>
@@ -346,6 +355,8 @@
 <li><code>AdjustingReportingPeriod</code>: A Transaction cannot be posted in a reporting period that is in the adjusting stage.</li>
 <li><code>InvalidTransactionDate</code>: A Transaction cannot be posted at the exact start of the reporting period.</li>
 <li><code>InvalidCurrency</code>: Transaction currency must be the same as that of the main Account.</li>
+<li><code>UnbalancedTransaction</code>: Compound (Journal Entry) Transactions Debit amounts must equal Credit amounts.</li>
+<li><code>InvalidVatRate</code>: Compound (Journal Entry) Transactions cannot have VAT charges.</li>
 </ul>
 <h1 id="transaction-types">Transaction Types</h1>
 <h2 id="cash-sale">Cash Sale</h2>
