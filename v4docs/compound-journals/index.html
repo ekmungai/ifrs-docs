@@ -305,7 +305,7 @@
 <span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
     <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account1</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
     <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Basic Cash Purchase&#34;</span><span class="p">,</span>
+    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Basic Journal Entry&#34;</span><span class="p">,</span>
 <span class="p">]);</span>
 
 </code></pre></div><p>Adding the line items and posting the journal.</p>
@@ -349,7 +349,7 @@
 <span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
     <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account1</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
     <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Basic Cash Purchase&#34;</span><span class="p">,</span>
+    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Compound Journal Entry&#34;</span><span class="p">,</span>
     <span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// main account shouold be debited
 </span><span class="c1"></span>    <span class="s1">&#39;main_account_amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span>
 <span class="p">]);</span>
