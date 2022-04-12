@@ -14,7 +14,7 @@
       
       <guid>https://ekmungai.github.io/ifrs-docs/v4docs/release-notes/</guid>
       <description>Eloquent-IFRS 4.0 is the final active development release which addresses the last part of the accounting process, Foreign Exchange differences management.
-Versioning Scheme Like Laravel, Eloquent-IFRS follows Semanting Versioning. This means that only Major releases introduce breaking changes to the package.</description>
+Versioning Scheme Like Laravel, Eloquent-IFRS follows Semantinc Versioning. This means that only Major releases introduce breaking changes to the package.</description>
     </item>
     
     <item>
