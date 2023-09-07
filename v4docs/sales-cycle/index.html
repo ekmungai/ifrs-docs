@@ -13,7 +13,7 @@
 
   
   
-  <link rel="stylesheet" href="/ifrs-docs/css/style.min.c6c7b76cf8ac1786ddc1bfe89aea2d71eb3fd696c5e1e2ea0dcb13f5a0913a80.css">
+  <link rel="stylesheet" href="/ifrs-docs/css/style.min.b40d8293e4dab56be57d1c330f8e3bd4fb31b0b8cb7755e2b881487cbdfa2b35.css">
   
 
   
@@ -61,10 +61,10 @@
     <div class='header'>
   <div class="container">
     <div class="logo">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div class="logo-mobile">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div id="main-menu" class="main-menu">
   <ul>
@@ -294,183 +294,180 @@
 <p>Sales can occur in one of two ways, cash sales in which the transaction is paid for immediately or credit sales in which case an invoice is raised for the client to be cleared at a later time.</p>
 <h3 id="cash-sales">Cash Sales</h3>
 <p>Cash Sales require a Bank Account and an Operarting Revenue account.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
-
-<span class="nv">$bankAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Sales Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$revenueAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Bank Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">OPERATING_REVENUE</span><span class="p">,</span>
-<span class="p">]);</span>
-</code></pre></div><p>With these, a Cash Sale object can be created.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Transactions\CashSale</span><span class="p">;</span>
-
-<span class="nv">$cashSale</span> <span class="o">=</span> <span class="nx">CashSale</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-   <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-   <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-   <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Sale&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-</code></pre></div><p>This represents only one side of the double entry, so to complete the transaction we need a Line Item. Line Items require an associated VAT object, even if the transaction does not attract VAT, a VAT object with a rate of 0 must be associated with the line item. If the VAT rate is more than 0%, the VAT object requires an associated account to which the output VAT amounts will be posted. Lets start with the VAT Account.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
-
-<span class="nv">$salesVatAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Sales VAT Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">CONTROL</span><span class="p">,</span>
-<span class="p">]);</span>
-</code></pre></div><p>Next we can setup the Output (Sales) VAT object.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Models\Vat</span><span class="p">;</span>
-
-<span class="nv">$outputVat</span> <span class="o">=</span> <span class="nx">Vat</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Standard Output Vat&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;code&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;S&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;rate&#39;</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
-<span class="p">]);</span>
-</code></pre></div><p>We now have all that we need to create the line item for our Cash Sale transaction.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\models\LineItem</span><span class="p">;</span>
-
-<span class="nv">$cashSaleLineItem</span> <span class="o">=</span> <span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;vat_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$outputVat</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Sale Line Item&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-<span class="p">]);</span>
-</code></pre></div><p>We then need to associate the line item with the cash sale transaction and post it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$cashSale</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span><span class="nv">$cashSaleLineItem</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
-</code></pre></div><h3 id="discounts">Discounts</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$bankAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Sales Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$revenueAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Bank Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">OPERATING_REVENUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>With these, a Cash Sale object can be created.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Transactions\CashSale</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$cashSale</span> <span class="o">=</span> <span class="nx">CashSale</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">   <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">   <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Sale&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>This represents only one side of the double entry, so to complete the transaction we need a Line Item. Line Items require an associated VAT object, even if the transaction does not attract VAT, a VAT object with a rate of 0 must be associated with the line item. If the VAT rate is more than 0%, the VAT object requires an associated account to which the output VAT amounts will be posted. Lets start with the VAT Account.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$salesVatAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Sales VAT Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">CONTROL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>Next we can setup the Output (Sales) VAT object.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Vat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$outputVat</span> <span class="o">=</span> <span class="nx">Vat</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Standard Output Vat&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;code&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;S&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;rate&#39;</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>We now have all that we need to create the line item for our Cash Sale transaction.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\models\LineItem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$cashSaleLineItem</span> <span class="o">=</span> <span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;vat_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$outputVat</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Sale Line Item&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>We then need to associate the line item with the cash sale transaction and post it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$cashSale</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span><span class="nv">$cashSaleLineItem</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</span></span></code></pre></div><h3 id="discounts">Discounts</h3>
 <p>In the event that the sale had a discount associated with it, the entries required to record the fact would need a discounts allowed account.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
-
-<span class="nv">$discountsAllowedAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Discounts Allowed Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">EXPENSE</span><span class="p">,</span>
-<span class="p">]);</span>
-</code></pre></div><p>That way after the discounted sale a journal entry can be made to move the lost income from the cash account into the proper expense account like so for a 10% discount on the net price:</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="k">use</span> <span class="nx">IFRS\Transactions\JournalEntry</span><span class="p">;</span>
-
-<span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Discount Allowed entry&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$discountsAllowedAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-	    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Discount Allowed entry&#34;</span><span class="p">,</span>
-	    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-	<span class="p">])</span>
-<span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
-
-</code></pre></div><p>Checking the results of the above transactions would yield the following balances.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nv">$currencyId</span> <span class="o">=</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">entity</span><span class="o">-&gt;</span><span class="na">currency_id</span><span class="p">;</span>
-
-<span class="nx">print_r</span><span class="p">([</span>
-	<span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$discountsAllowedAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">]</span>
-<span class="p">]);</span>
-
-<span class="c1">// printout
-</span><span class="c1"></span><span class="k">Array</span>
-<span class="p">(</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">110</span> <span class="c1">// 100 + 20 (vat) - 10 (discount)
-</span><span class="c1"></span>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">100</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">20</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">10</span>
-<span class="p">)</span>
-
-</code></pre></div><h3 id="credit-sales-with-vat-inclusive-amount">Credit Sales (With VAT inclusive amount)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$discountsAllowedAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Discounts Allowed Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">EXPENSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>That way after the discounted sale a journal entry can be made to move the lost income from the cash account into the proper expense account like so for a 10% discount on the net price:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Transactions\JournalEntry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Discount Allowed entry&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$discountsAllowedAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Discount Allowed entry&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</span></span></code></pre></div><p>Checking the results of the above transactions would yield the following balances.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$currencyId</span> <span class="o">=</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">entity</span><span class="o">-&gt;</span><span class="na">currency_id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">print_r</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$discountsAllowedAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// printout
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">Array</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">110</span> <span class="c1">// 100 + 20 (vat) - 10 (discount)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">100</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">20</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><h3 id="credit-sales-with-vat-inclusive-amount">Credit Sales (With VAT inclusive amount)</h3>
 <p>Unlike the Cash Sale transaction, a Credit Sale transaction needs a Recievable account in place of a Bank Account.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nv">$clientAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Client Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">RECEIVABLE</span><span class="p">,</span>
-<span class="p">]);</span>
-</code></pre></div><p>Now we can create a Client Invoice object for a sale of 100 with vat being inclusive in the amount.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="k">use</span> <span class="nx">IFRS\Transactions\ClientInvoice</span><span class="p">;</span>
-
-<span class="nv">$clientInvoice</span> <span class="o">=</span> <span class="nx">ClientInvoice</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$clientAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Credit Sale&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$clientInvoice</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;vat_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$outputVat</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Credit Sale Line Item&#34;</span><span class="p">,</span>
-		<span class="s1">&#39;vat_inclusive&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-	<span class="p">])</span>
-<span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
-</code></pre></div><p>Assuming that the transactions above do not count, checking the results of the credit sale yields the following balances.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nx">print_r</span><span class="p">([</span>
-	<span class="nv">$clientInvoice</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">]</span>
-<span class="p">]);</span>
-
-<span class="c1">// printout
-</span><span class="c1"></span><span class="k">Array</span>
-<span class="p">(</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">100</span> <span class="c1">// full invoice amount
-</span><span class="c1"></span>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">83.3333</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">16.6667</span> <span class="c1">// 100 - (100 / 1.2) (inclusive vat)
-</span><span class="c1"></span><span class="p">)</span>
-
-</code></pre></div><p>At some later point in time the client will pay for the invoice, which we record by way of a client receipt. Client Receipts require a Zero rated VAT object.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="k">use</span> <span class="nx">IFRS\Models\Vat</span><span class="p">;</span>
-
-<span class="nv">$zeroVat</span> <span class="o">=</span> <span class="nx">Vat</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Zero Rated Vat&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;code&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Z&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;rate&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="k">use</span> <span class="nx">IFRS\Transactions\ClientReceipt</span><span class="p">;</span>
-
-<span class="nv">$clientReceipt</span> <span class="o">=</span> <span class="nx">ClientReceipt</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$clientAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Client Payment&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$clientReceipt</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span><span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;vat_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$zeroVat</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Payment for Client Invoice&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-<span class="p">])</span>
-<span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
-</code></pre></div><p>With this change the account balances would now look as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nx">print_r</span><span class="p">([</span>
-	<span class="nv">$clientInvoice</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">]</span>
-<span class="p">]);</span>
-
-<span class="c1">// printout
-</span><span class="c1"></span><span class="k">Array</span>
-<span class="p">(</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">0</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">83.3333</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">16.6667</span> 
-    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">100</span> 
-<span class="p">)</span>
-</code></pre></div><p>This marks the conclusion of the Credit Sales cycle.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$clientAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Client Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">RECEIVABLE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>Now we can create a Client Invoice object for a sale of 100 with vat being inclusive in the amount.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Transactions\ClientInvoice</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$clientInvoice</span> <span class="o">=</span> <span class="nx">ClientInvoice</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$clientAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Credit Sale&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$clientInvoice</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;vat_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$outputVat</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Credit Sale Line Item&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;vat_inclusive&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</span></span></code></pre></div><p>Assuming that the transactions above do not count, checking the results of the credit sale yields the following balances.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">print_r</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$clientInvoice</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// printout
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">Array</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">100</span> <span class="c1">// full invoice amount
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">83.3333</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">16.6667</span> <span class="c1">// 100 - (100 / 1.2) (inclusive vat)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">)</span>
+</span></span></code></pre></div><p>At some later point in time the client will pay for the invoice, which we record by way of a client receipt. Client Receipts require a Zero rated VAT object.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Vat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$zeroVat</span> <span class="o">=</span> <span class="nx">Vat</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Zero Rated Vat&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;code&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;rate&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Transactions\ClientReceipt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$clientReceipt</span> <span class="o">=</span> <span class="nx">ClientReceipt</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$clientAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Client Payment&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$clientReceipt</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span><span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;vat_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$zeroVat</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Payment for Client Invoice&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</span></span></code></pre></div><p>With this change the account balances would now look as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">print_r</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$clientInvoice</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$revenueAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$salesVatAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// printout
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">Array</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">83.3333</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">16.6667</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">100</span> 
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>This marks the conclusion of the Credit Sales cycle.</p>
 
 </div>
 </div>
@@ -499,7 +496,7 @@
   
 
   
-  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.eaf147370baecdd07c022597db631f99cab1c9cd6479de586f30327a568d6a0f.js"></script>
+  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
   
 
   

@@ -13,7 +13,7 @@
 
   
   
-  <link rel="stylesheet" href="/ifrs-docs/css/style.min.c6c7b76cf8ac1786ddc1bfe89aea2d71eb3fd696c5e1e2ea0dcb13f5a0913a80.css">
+  <link rel="stylesheet" href="/ifrs-docs/css/style.min.b40d8293e4dab56be57d1c330f8e3bd4fb31b0b8cb7755e2b881487cbdfa2b35.css">
   
 
   
@@ -61,10 +61,10 @@
     <div class='header'>
   <div class="container">
     <div class="logo">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div class="logo-mobile">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div id="main-menu" class="main-menu">
   <ul>
@@ -290,116 +290,113 @@
   <p>Compound Journal Entries are JournalEntry transactions in which the line items can be posted to arbitrary sides of the ledger. As such, they require a few extra parameters.</p>
 <h2 id="basic-journal-entry">Basic Journal Entry</h2>
 <p>In a normal Journal Entry, all the Line Items are automatically posted to the opposite side of the main account.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
-
-<span class="nv">$account1</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Main Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$account2</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Account 1&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
-<span class="p">]);</span>
-<span class="nv">$account3</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Account 2&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
-<span class="p">]);</span>
-<span class="nv">$account4</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Account 3&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="k">use</span> <span class="nx">IFRS\Transactions\JournalEntry</span><span class="p">;</span>
-
-<span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account1</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Basic Journal Entry&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-
-</code></pre></div><p>Adding the line items and posting the journal.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\models\LineItem</span><span class="p">;</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account2</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 1&#34;</span><span class="p">,</span>
-		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-	<span class="p">])</span>
-<span class="p">);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account3</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 2&#34;</span><span class="p">,</span>
-		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-	<span class="p">])</span>
-<span class="p">);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account4</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 3&#34;</span><span class="p">,</span>
-		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-	<span class="p">])</span>
-<span class="p">);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
-</code></pre></div><p>The above transaction will result in the following entries in the ledger.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">1</span>	<span class="mi">100</span>
-<span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">2</span>	<span class="mi">100</span>
-<span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">3</span>	<span class="mi">100</span>
-	<span class="nx">Cr</span><span class="o">:</span> <span class="nx">Main</span> <span class="nx">Account</span>	<span class="mi">300</span> <span class="c1">// The main account is credited by default
-</span><span class="c1"></span>			<span class="mi">300</span>	<span class="mi">300</span>
-</code></pre></div><h2 id="compound-journal-entry">Compound Journal Entry</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$account1</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Main Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$account2</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Account 1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$account3</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Account 2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$account4</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Account 3&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Transactions\JournalEntry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account1</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Basic Journal Entry&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>Adding the line items and posting the journal.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\models\LineItem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account2</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account3</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account4</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 3&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</span></span></code></pre></div><p>The above transaction will result in the following entries in the ledger.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">1</span>	<span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">2</span>	<span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">3</span>	<span class="mi">100</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Cr</span><span class="o">:</span> <span class="nx">Main</span> <span class="nx">Account</span>	<span class="mi">300</span> <span class="c1">// The main account is credited by default
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="mi">300</span>	<span class="mi">300</span>
+</span></span></code></pre></div><h2 id="compound-journal-entry">Compound Journal Entry</h2>
 <p>For a compound Journal Entry we can specify which side the line item amount should be posted to the line item account. To ensure that the transaction balanaces however, we also need to input the amount to be posted to the main account in addition to the side of the ledger.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account1</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Compound Journal Entry&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// main account shouold be debited
-</span><span class="c1"></span>    <span class="s1">&#39;main_account_amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span>
-<span class="p">]);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account2</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 1&#34;</span><span class="p">,</span>
-		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
-		<span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
-	<span class="p">])</span>
-<span class="p">);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account3</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 2&#34;</span><span class="p">,</span>
-		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
-		<span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
-	<span class="p">])</span>
-<span class="p">);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account4</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 3&#34;</span><span class="p">,</span>
-		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">15</span><span class="p">,</span>
-		<span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
-	<span class="p">])</span>
-<span class="p">);</span>
-
-</code></pre></div><p>The above transaction will result in the following entries in the ledger.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nx">Dr</span><span class="o">:</span> <span class="nx">Main</span> <span class="nx">Account</span> 		<span class="mi">10</span>
-	<span class="nx">Cr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">1</span> 		<span class="mi">25</span> 
-<span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">2</span>		<span class="mi">30</span>
-	<span class="nx">Cr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">3</span>		<span class="mi">15</span>
-				<span class="mi">40</span>	<span class="mi">40</span>
-
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account1</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Compound Journal Entry&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// main account shouold be debited
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;main_account_amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account2</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account3</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$account4</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Line Item 3&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">15</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;credited&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span></code></pre></div><p>The above transaction will result in the following entries in the ledger.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Dr</span><span class="o">:</span> <span class="nx">Main</span> <span class="nx">Account</span> 		<span class="mi">10</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Cr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">1</span> 		<span class="mi">25</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">Dr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">2</span>		<span class="mi">30</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Cr</span><span class="o">:</span> <span class="nx">Line</span> <span class="nx">Account</span> <span class="mi">3</span>		<span class="mi">15</span>
+</span></span><span class="line"><span class="cl">				<span class="mi">40</span>	<span class="mi">40</span>
+</span></span></code></pre></div>
 </div>
 </div>
 
@@ -427,7 +424,7 @@
   
 
   
-  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.eaf147370baecdd07c022597db631f99cab1c9cd6479de586f30327a568d6a0f.js"></script>
+  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
   
 
   

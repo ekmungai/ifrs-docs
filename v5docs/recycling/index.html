@@ -13,7 +13,7 @@
 
   
   
-  <link rel="stylesheet" href="/ifrs-docs/css/style.min.c6c7b76cf8ac1786ddc1bfe89aea2d71eb3fd696c5e1e2ea0dcb13f5a0913a80.css">
+  <link rel="stylesheet" href="/ifrs-docs/css/style.min.b40d8293e4dab56be57d1c330f8e3bd4fb31b0b8cb7755e2b881487cbdfa2b35.css">
   
 
   
@@ -61,10 +61,10 @@
     <div class='header'>
   <div class="container">
     <div class="logo">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div class="logo-mobile">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div id="main-menu" class="main-menu">
   <ul>
@@ -301,18 +301,18 @@
 </ul>
 <h3 id="usage">Usage</h3>
 <p>This class is not intended to be used directly, it is hooked into Eloquents events system specifically the <code>deleting</code> and <code>restoring</code> events. To recycle an object, simply call delete on it as you would any Eloquent model.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$user = User::create([&#34;email&#34;=&gt;&#34;test@example.com&#34;,&#34;password&#34;=&gt;&#34;testpassword&#34;]);
-
-$user-&gt;delete();
-</code></pre></div><p>This marks the object as deleted, making the object unavailable vie regular querying functions. It may however be retrieved using the Eloquent <code>withTrashed()</code> function. It also creates a <code>RecycledObject</code>instance in the database to record the action.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$user = User::withTrashed()-&gt;where(&#34;id&#34;,$user_id)-&gt;first();
-</code></pre></div><p>You can then inspect details of all the recycling actions such as the time they happened and the users responsible by calling the <code>recycled()</code> method on the object, which returns a collection of <code>RecycledObject</code> belonging to the object.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$user-&gt;recycled(); // Eloquent Collection
-</code></pre></div><p>Restoring the item with the <code>restore()</code> function deletes the <code>RecycledObject</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$user-&gt;restore();
-</code></pre></div><p>Calling <code>forceDelete()</code> function on an object marks it as destroyed, which means that whereas the object is still visible by using <code>withTrashed()</code> it cannot be restored.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$user-&gt;forceDelete();
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$user = User::create([&#34;email&#34;=&gt;&#34;test@example.com&#34;,&#34;password&#34;=&gt;&#34;testpassword&#34;]);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$user-&gt;delete();
+</span></span></code></pre></div><p>This marks the object as deleted, making the object unavailable vie regular querying functions. It may however be retrieved using the Eloquent <code>withTrashed()</code> function. It also creates a <code>RecycledObject</code>instance in the database to record the action.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$user = User::withTrashed()-&gt;where(&#34;id&#34;,$user_id)-&gt;first();
+</span></span></code></pre></div><p>You can then inspect details of all the recycling actions such as the time they happened and the users responsible by calling the <code>recycled()</code> method on the object, which returns a collection of <code>RecycledObject</code> belonging to the object.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$user-&gt;recycled(); // Eloquent Collection
+</span></span></code></pre></div><p>Restoring the item with the <code>restore()</code> function deletes the <code>RecycledObject</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$user-&gt;restore();
+</span></span></code></pre></div><p>Calling <code>forceDelete()</code> function on an object marks it as destroyed, which means that whereas the object is still visible by using <code>withTrashed()</code> it cannot be restored.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$user-&gt;forceDelete();
+</span></span></code></pre></div><hr>
 
 </div>
 </div>
@@ -341,7 +341,7 @@ $user-&gt;delete();
   
 
   
-  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.eaf147370baecdd07c022597db631f99cab1c9cd6479de586f30327a568d6a0f.js"></script>
+  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
   
 
   

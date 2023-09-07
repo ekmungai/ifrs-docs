@@ -13,7 +13,7 @@
 
   
   
-  <link rel="stylesheet" href="/ifrs-docs/css/style.min.c6c7b76cf8ac1786ddc1bfe89aea2d71eb3fd696c5e1e2ea0dcb13f5a0913a80.css">
+  <link rel="stylesheet" href="/ifrs-docs/css/style.min.b40d8293e4dab56be57d1c330f8e3bd4fb31b0b8cb7755e2b881487cbdfa2b35.css">
   
 
   
@@ -61,10 +61,10 @@
     <div class='header'>
   <div class="container">
     <div class="logo">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div class="logo-mobile">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div id="main-menu" class="main-menu">
   <ul>
@@ -291,38 +291,38 @@
 <p>Eloquent IFRS requries php version 8.0.2 and Eloquent 8.4 and above</p>
 <h3 id="installation">Installation</h3>
 <p>Use composer to Install the package into your application.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">composer</span> <span class="k">require</span> <span class="s2">&#34;ekmungai/eloquent-ifrs&#34;</span>
-<span class="nx">composer</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">no</span><span class="o">-</span><span class="nx">dev</span>
-</code></pre></div><p>If using Lumen, make sure to register the package with your application by adding the <code>IFRSServiceProvider</code> to the <code>app.php</code> in the bootstrap folder.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">use</span> <span class="nx">IFRS\IFRSServiceProvider</span><span class="p">;</span>
-
-<span class="k">require_once</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../vendor/autoload.php&#39;</span><span class="p">;</span>
-<span class="o">...</span>
-
-<span class="cm">/*
-</span><span class="cm">|--------------------------------------------------------------------------
-</span><span class="cm">| Register Service Providers
-</span><span class="cm">|--------------------------------------------------------------------------
-</span><span class="cm">|
-</span><span class="cm">| Here we will register all of the application&#39;s service providers which
-</span><span class="cm">| are used to bind services into the container. Service providers are
-</span><span class="cm">| totally optional, so you are not required to uncomment this line.
-</span><span class="cm">|
-</span><span class="cm">*/</span>
-
-<span class="c1">// $app-&gt;register(App\Providers\AppServiceProvider::class);
-</span><span class="c1">// $app-&gt;register(App\Providers\AuthServiceProvider::class);
-</span><span class="c1">// $app-&gt;register(App\Providers\EventServiceProvider::class);
-</span><span class="c1"></span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">(</span><span class="nx">IFRSServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-  <span class="o">...</span>
-<span class="p">}</span>
-<span class="o">...</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></div><p>Then run migrations to create the database tables.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">migrate</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">composer</span> <span class="k">require</span> <span class="s2">&#34;ekmungai/eloquent-ifrs&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">composer</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">no</span><span class="o">-</span><span class="nx">dev</span>
+</span></span></code></pre></div><p>If using Lumen, make sure to register the package with your application by adding the <code>IFRSServiceProvider</code> to the <code>app.php</code> in the bootstrap folder.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\IFRSServiceProvider</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">require_once</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../vendor/autoload.php&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">|--------------------------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">| Register Service Providers
+</span></span></span><span class="line"><span class="cl"><span class="cm">|--------------------------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="cm">|
+</span></span></span><span class="line"><span class="cl"><span class="cm">| Here we will register all of the application&#39;s service providers which
+</span></span></span><span class="line"><span class="cl"><span class="cm">| are used to bind services into the container. Service providers are
+</span></span></span><span class="line"><span class="cl"><span class="cm">| totally optional, so you are not required to uncomment this line.
+</span></span></span><span class="line"><span class="cl"><span class="cm">|
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// $app-&gt;register(App\Providers\AppServiceProvider::class);
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $app-&gt;register(App\Providers\AuthServiceProvider::class);
+</span></span></span><span class="line"><span class="cl"><span class="c1">// $app-&gt;register(App\Providers\EventServiceProvider::class);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">(</span><span class="nx">IFRSServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>Then run migrations to create the database tables.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">migrate</span>
+</span></span></code></pre></div><hr>
 
 </div>
 </div>
@@ -351,7 +351,7 @@
   
 
   
-  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.eaf147370baecdd07c022597db631f99cab1c9cd6479de586f30327a568d6a0f.js"></script>
+  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
   
 
   

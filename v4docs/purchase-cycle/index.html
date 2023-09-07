@@ -13,7 +13,7 @@
 
   
   
-  <link rel="stylesheet" href="/ifrs-docs/css/style.min.c6c7b76cf8ac1786ddc1bfe89aea2d71eb3fd696c5e1e2ea0dcb13f5a0913a80.css">
+  <link rel="stylesheet" href="/ifrs-docs/css/style.min.b40d8293e4dab56be57d1c330f8e3bd4fb31b0b8cb7755e2b881487cbdfa2b35.css">
   
 
   
@@ -61,10 +61,10 @@
     <div class='header'>
   <div class="container">
     <div class="logo">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div class="logo-mobile">
-      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/ifrs-docs/images/ifrs-logo.png" /></a>
+      <a href="https://ekmungai.github.io/ifrs-docs/"><img alt="Logo" src="/images/ifrs-logo.png" /></a>
     </div>
     <div id="main-menu" class="main-menu">
   <ul>
@@ -292,91 +292,87 @@
   <p>The purchase cycle is the process by which the entity acquires goods and services either as raw material for production or for the purpose of administration. This example will demonstrate A Cash Purchase and a Refund (for goods returned for instance).</p>
 <h2 id="cash-purchase">Cash Purchase</h2>
 <p>A Cash Purchase requires a Bank Account.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
-
-<span class="nv">$bankAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Sales Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="k">use</span> <span class="nx">IFRS\Transactions\CashPurchase</span><span class="p">;</span>
-
-<span class="nv">$cashPurchase</span> <span class="o">=</span> <span class="nx">CashPurchase</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Purchase&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-
-</code></pre></div><p>For the line item of the Cash purchase, we&rsquo;ll need an Expense Account, Input VAT Account and an input VAT object</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
-
-<span class="nv">$opexAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Operations Expense Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">OPERATING_EXPENSE</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$inputVatAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Input VAT Account&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">CONTROL</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="k">use</span> <span class="nx">IFRS\Models\Vat</span><span class="p">;</span>
-
-<span class="nv">$inputVat</span> <span class="o">=</span> <span class="nx">Vat</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Standard Input Vat&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;code&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;I&#34;</span><span class="p">,</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$inputVatAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;rate&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-<span class="p">]);</span>
-
-</code></pre></div><p>Now we can create the line item, add the input vat and attach it to the cash purchase and post it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">IFRS\models\LineItem</span><span class="p">;</span>
-
-<span class="nv">$cashPurchaseLineItem</span> <span class="o">=</span> <span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-	<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$opexAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-	<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Purchase Line Item&#34;</span><span class="p">,</span>
-	<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$cashPurchaseLineItem</span><span class="o">-&gt;</span><span class="na">addVat</span><span class="p">(</span><span class="nv">$inputVat</span><span class="p">);</span>
-<span class="nv">$cashPurchase</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
-</code></pre></div><p>To further this example, lets assume that we returned 50 (excluding ) worth of the goods we purchased. We need to effect a refund from the supplier, and we do so by making a journal entry to reverse the original transaction by that much.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="k">use</span> <span class="nx">IFRS\Transactions\JournalEntry</span><span class="p">;</span>
-
-<span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$opexAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
-    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example refund for goods returned&#34;</span><span class="p">,</span>
-<span class="p">]);</span>
-
-<span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
-	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
-		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-	    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example refund for goods returned&#34;</span><span class="p">,</span>
-	    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">55</span><span class="p">,</span>
-	<span class="p">])</span>
-<span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
-
-</code></pre></div><p>Checking the results of the above transactions would yield the following balances.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">
-<span class="nv">$currencyId</span> <span class="o">=</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">entity</span><span class="o">-&gt;</span><span class="na">currency_id</span><span class="p">;</span>
-
-<span class="nx">print_r</span><span class="p">([</span>
-	<span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$opexAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-	<span class="nv">$inputVat</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
-<span class="p">]);</span>
-
-<span class="c1">// printout
-</span><span class="c1"></span><span class="k">Array</span>
-<span class="p">(</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">55</span> <span class="c1">// 100 + 10 (vat) - 55 (refund)
-</span><span class="c1"></span>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">50</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">5</span>
-<span class="p">)</span>
-
-</code></pre></div><h3 id="credit-purchases">Credit Purchases</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$bankAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Sales Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">BANK</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Transactions\CashPurchase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$cashPurchase</span> <span class="o">=</span> <span class="nx">CashPurchase</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Purchase&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>For the line item of the Cash purchase, we&rsquo;ll need an Expense Account, Input VAT Account and an input VAT object</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Account</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$opexAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Operations Expense Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">OPERATING_EXPENSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$inputVatAccount</span> <span class="o">=</span> <span class="nx">Account</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Input VAT Account&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">Account</span><span class="o">::</span><span class="na">CONTROL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Models\Vat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$inputVat</span> <span class="o">=</span> <span class="nx">Vat</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Standard Input Vat&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;code&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;I&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$inputVatAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;rate&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span></code></pre></div><p>Now we can create the line item, add the input vat and attach it to the cash purchase and post it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\models\LineItem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$cashPurchaseLineItem</span> <span class="o">=</span> <span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$opexAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example Cash Purchase Line Item&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$cashPurchaseLineItem</span><span class="o">-&gt;</span><span class="na">addVat</span><span class="p">(</span><span class="nv">$inputVat</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$cashPurchase</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</span></span></code></pre></div><p>To further this example, lets assume that we returned 50 (excluding ) worth of the goods we purchased. We need to effect a refund from the supplier, and we do so by making a journal entry to reverse the original transaction by that much.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">IFRS\Transactions\JournalEntry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span> <span class="o">=</span> <span class="nx">JournalEntry</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$opexAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;narration&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example refund for goods returned&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$journalEntry</span><span class="o">-&gt;</span><span class="na">addLineItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LineItem</span><span class="o">::</span><span class="na">create</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="s1">&#39;account_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s2">&#34;Example refund for goods returned&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	    <span class="s1">&#39;amount&#39;</span> <span class="o">=&gt;</span> <span class="mi">55</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</span></span></code></pre></div><p>Checking the results of the above transactions would yield the following balances.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$currencyId</span> <span class="o">=</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">entity</span><span class="o">-&gt;</span><span class="na">currency_id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">print_r</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$bankAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$opexAccount</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$inputVat</span><span class="o">-&gt;</span><span class="na">closingBalance</span><span class="p">()[</span><span class="nv">$currencyId</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// printout
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">Array</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">55</span> <span class="c1">// 100 + 10 (vat) - 55 (refund)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><h3 id="credit-purchases">Credit Purchases</h3>
 <p>The Credit Purchase cycle follows the same process as the Credit Sales cycle only replacing the Receivable and Operating Revenue with a Payable and Expense accounts respectively.</p>
 
 </div>
@@ -406,7 +402,7 @@
   
 
   
-  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.eaf147370baecdd07c022597db631f99cab1c9cd6479de586f30327a568d6a0f.js"></script>
+  <script type="text/javascript" src="/ifrs-docs/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
   
 
   
