@@ -306,6 +306,7 @@
 <li><code>entity</code>: The Entity associated with the transaction. Defaults to the entity of the logged in user.</li>
 <li><code>ledgers</code>: The Ledger objects associated with the transaction.</li>
 <li><code>assignments</code>: Transactions that have been cleared by (assigned to) this transaction.</li>
+<li><code>attachment</code>: An Eloquent model attached to the Transaction. The link is established by setting the <code>attachment_id</code> and <code>attachment_type</code> properties, with the type being the class name of the model to be attached.</li>
 <li><code>clearances</code>: Transactions that have cleared this transaction.</li>
 <li><code>lineItems:</code> The LineItem objects associated with the transaction.</li>
 <li><code>isPosted:</code> A boolean indicating whether the transaction has been posted to the ledger.</li>
