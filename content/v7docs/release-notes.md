@@ -5,6 +5,8 @@ weight: 1
 heading: 'Prologue'
 ---
 
+Eloquent-IFRS 7.2 corrects stored Balances and clearances, and reports that came back empty, stale or with the wrong sign. See [Upgrading to 7.2]({{< relref "#upgrading-to-72" >}}).
+
 Eloquent-IFRS 7.1 makes reports honour their dates, and adds a command to repair Balances attached to the wrong year. See [Upgrading to 7.1]({{< relref "#upgrading-to-71" >}}).
 
 Eloquent-IFRS 7.0 corrects the balances of entities whose financial year does not start in January, stores exchange rates with a configurable precision, stops the package creating or owning the application's users table, and declares nullable parameters explicitly so that it loads without deprecation notices on PHP 8.4 and above.
@@ -40,6 +42,39 @@ Rates are now stored with `forex_scale` decimal places. The default of `4` chang
 + Zero rated Vat - Posting a Line Item with a zero rated Vat no longer fails. It posts no Vat ledger entries.
 + Reporting Period - Add `ReportingPeriod::yearStart()`.
 + Recycled objects - The `user_id` column now matches the type of the users table's primary key, and `recyclable_id` is always a big integer.
+
+### Upgrading to 7.2
+
+Update your `ekmungai/eloquent-ifrs` dependency to ^7.2 in your `composer.json` file. There are no migrations, but reported figures change, and code that relied on the old figures or on empty results may need updating.
+
+#### Check your data
+
+Run `php artisan ifrs:audit-balances`, which changes nothing, and go through what it lists. Foreign currency Balances that were edited after they were created may have been multiplied by their exchange rate, and transactions may have been over cleared. See [Auditing Balances]({{< relref "balances.md#auditing-balances" >}}).
+
+#### Reported figures change
+
++ End date without a start date - `AccountStatement`, `AccountSchedule` and `IncomeStatement` now start from the year of their end date. They came back empty for an earlier end date, and `AgingSchedule` was always empty before the current year.
++ Schedules - `AccountSchedule` and `AgingSchedule` count only what had been cleared by their end date, so a schedule for a past date may show more outstanding.
++ `IncomeStatement::getResults()` - Results keep their sign, so a loss is negative rather than positive. `GROSS_PROFIT` no longer includes non operating revenue, so it is lower for anyone who has any, and agrees with `getSections()`.
++ `BalanceSheet::TOTAL_EQUITY` - Negative equity is reported as negative.
++ `$category->getAccountBalances()` - Opening balances are included when no start date is given.
+
+#### Errors that were silent
+
++ `EntityMismatch` - Passing an `$entity` other than that of the logged in user now throws this, where it used to come back empty or throw `MissingReportingPeriod`. See [Entities]({{< relref "entities.md" >}}).
++ `OverClearance` - It now applies to fractions, where it only compared whole numbers.
++ `InvalidBalanceDate` - A new or re-dated Balance is now checked against its own reporting period rather than the current one.
++ `ClosedReportingPeriod` - It now applies to new Balances, and to changes to the amount or period of a Balance. Other edits to existing Balances are unaffected.
+
+#### Other changes
+
++ `Balance::save()` translates only a new amount, so editing a Balance no longer changes it. A new value given to `balance` must be in the Balance's own currency.
++ `clearances` and `cleared_amount` are now correct on Transaction subclasses such as `ClientInvoice`, where they came back empty.
++ `Account::sectionBalances()` keeps Categories that share a name apart. The second is keyed `Name (id)`, so code looking a Category up by name gets the first.
++ `$reportingPeriod->transactionCurrencies()` is limited to the entity and ignores deleted transactions.
++ `Transaction::transactionNo()` counts only its own reporting period. If you have backdated transactions, a later number in that year could repeat one issued before this change.
++ `Assignment::bulkAssign()` no longer saves an Assignment of zero.
++ The reports declare their properties, removing the deprecation notices on PHP 8.2 and above.
 
 ### Upgrading to 7.1
 

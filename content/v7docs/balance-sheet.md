@@ -10,7 +10,7 @@ The Balance Sheet, also known as the Statement of Financial position shows the f
 An BalanceSheet constructor takes the following parameters:
 
 + `$endDate`: The last date on which account balances should be included in the report. Defaults to the last day of the current reporting period.
-+ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user.
++ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user. (See [Entities]({{< relref "entities.md" >}})).
 
 ### Attributes
 + `$balanceSheet->entity`: The Entity object associated with the report.
@@ -36,4 +36,4 @@ An BalanceSheet constructor takes the following parameters:
 + `BalanceSheet::NET_ASSETS`: The net assets result.
 + `BalanceSheet::TOTAL_RECONCILIATION`: The reconciliation section total.
 + `BalanceSheet::NET_PROFIT`: The net profit result.
-+ `BalanceSheet::TOTAL_EQUITY`: The equity section total.
++ `BalanceSheet::TOTAL_EQUITY`: The equity section total, including the net profit for the period. An entity whose liabilities exceed its assets has negative equity.

@@ -18,7 +18,7 @@ Balances represent amounts on Balance Sheet accounts carried over from previous 
 + `transaction_type`: The type of the Transaction object that originated the  balance amount. Defaults to `Transaction::JN`.
 + `reference`: More information about the Transaction object that originated the balance amount.
 + `balance_type`: The side of the double entry the balance should be posted. Defaults to `Balance::DEBIT`.
-+ `balance`: The balance amount. This may or may not be the amount of the originating Transaction depending on its clearance in its reporting period.
++ `balance`: The balance amount. This may or may not be the amount of the originating Transaction depending on its clearance in its reporting period. It is entered in the Balance's currency, and stored in the reporting currency at the Balance's exchange rate. Reading it gives the stored amount, so a new value given to an existing Balance must be in its own currency.
 + `is_posted`: A boolean to mirror the Transaction model isPosted attribute because like some Transactions Balances are Clearable.
 + `is_credited`: A boolean to mirror the Transaction model isCredited attribute because like some Transactions Balances are Clearable.
 + `cleared_type`: The string representation of the Balance model because like some Transactions Balances are Clearable.
@@ -51,12 +51,28 @@ php artisan ifrs:repair-balances --apply
 
 A Balance is left where it is, and shown as blocked, if either reporting period is closed or the year it belongs to has no reporting period.
 
+### Auditing Balances
+
+Before version 7.2, saving a foreign currency Balance translated it by its exchange rate again, and a transaction could be cleared by up to 1 more than its amount. Fixing the package does not repair what is already stored. To list what needs checking, run:
+
+```php
+php artisan ifrs:audit-balances
+```
+
+Add `--entity=` to check a single Entity. The command only reads, and lists:
+
++ Foreign currency Balances saved after they were created. These are candidates, not errors: a Balance that was legitimately re-entered looks the same, so check each one against its source.
++ Transactions and Balances cleared by more than their amount.
+
+There is no option to repair these, because a Balance's original amount has to come from its source, and how to put an over clearance right is a decision for the entity's accountant.
+
 ### Constraints
 + `NegativeAmount`: Balance amounts cannot be negative. 
 + `InvalidBalanceTransaction`: Transaction type must be one of `Transaction::IN`, `Transaction::BL` or `Transaction::JN`. See [Transactions]({{< relref "transactions.md" >}}) for details of Transaction Types.
 + `InvalidBalanceType`: Balance type must be one of `Balance::DEBIT` or `Balance::CREDIT`.
 + `InvalidAccountClassBalance`: Income Statement Account cannot have balances.
 + `InvalidCurrency`: Account type can only accept balances of the same currency as their own.
-+ `InvalidBalanceDate`: Balance transaction date cannot be later than the first day of the current reporting period unless the entity has `mid_year_balances` set to true. (See [Entities]({{< relref "entities.md" >}})).
++ `InvalidBalanceDate`: Balance transaction date cannot be later than the first day of the balance's reporting period unless the entity has `mid_year_balances` set to true. It is checked when the Balance is created, or when its date or reporting period changes. (See [Entities]({{< relref "entities.md" >}})).
++ `ClosedReportingPeriod`: A Balance cannot be added to a closed reporting period, and the amount or reporting period of a Balance in one cannot be changed.
 
 ***

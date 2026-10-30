@@ -12,7 +12,7 @@ The report covers exactly the period it is given, both of whose days are include
 A CashFlowStatement constructor takes the following parameters:
 + `$startDate`: The first date on which account balances should be included in the report. Defaults to the first day of the reporting period of `$endDate`.
 + `$endDate`: The last date on which account balances should be included in the report. Defaults to the current date.
-+ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user.
++ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user. (See [Entities]({{< relref "entities.md" >}})).
 
 ### Attributes
 + `$cashFlowStatement->entity`: The Entity object associated with the report.
