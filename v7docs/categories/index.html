@@ -316,7 +316,7 @@
 </ul>
 <h3 id="methods">Methods</h3>
 <ul>
-<li><code>$category-&gt;getAccountBalances($startDate, $endDate):</code> Retrieve an array of the balances of the accounts belonging to the category.</li>
+<li><code>$category-&gt;getAccountBalances($startDate, $endDate):</code> Retrieve an array of the balances of the accounts belonging to the category. <code>$startDate</code> defaults to the first day of the reporting period of <code>$endDate</code>, and opening balances are included when the two coincide.</li>
 <li><code>$category-&gt;attributes():</code> Presents the category&rsquo;s attributes as an object. Useful for debugging.</li>
 <li><code>$category-&gt;toString():</code> The string representation of the Category object instance.</li>
 </ul>

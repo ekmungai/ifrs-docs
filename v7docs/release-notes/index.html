@@ -306,7 +306,8 @@
           
 <h1 class="title">Release Notes</h1>
 <div class="content ">
-  <p>Eloquent-IFRS 7.1 makes reports honour their dates, and adds a command to repair Balances attached to the wrong year. See <a href="#upgrading-to-71">Upgrading to 7.1</a>.</p>
+  <p>Eloquent-IFRS 7.2 corrects stored Balances and clearances, and reports that came back empty, stale or with the wrong sign. See <a href="#upgrading-to-72">Upgrading to 7.2</a>.</p>
+<p>Eloquent-IFRS 7.1 makes reports honour their dates, and adds a command to repair Balances attached to the wrong year. See <a href="#upgrading-to-71">Upgrading to 7.1</a>.</p>
 <p>Eloquent-IFRS 7.0 corrects the balances of entities whose financial year does not start in January, stores exchange rates with a configurable precision, stops the package creating or owning the application&rsquo;s users table, and declares nullable parameters explicitly so that it loads without deprecation notices on PHP 8.4 and above.</p>
 <p>Version 6.0, which had no documentation of its own, added Laravel 13 and raised the minimum requirements. If you are upgrading from version 5, read its changes below as well.</p>
 <h3 id="versioning-scheme">Versioning Scheme</h3>
@@ -329,6 +330,35 @@
 <li>Zero rated Vat - Posting a Line Item with a zero rated Vat no longer fails. It posts no Vat ledger entries.</li>
 <li>Reporting Period - Add <code>ReportingPeriod::yearStart()</code>.</li>
 <li>Recycled objects - The <code>user_id</code> column now matches the type of the users table&rsquo;s primary key, and <code>recyclable_id</code> is always a big integer.</li>
+</ul>
+<h3 id="upgrading-to-72">Upgrading to 7.2</h3>
+<p>Update your <code>ekmungai/eloquent-ifrs</code> dependency to ^7.2 in your <code>composer.json</code> file. There are no migrations, but reported figures change, and code that relied on the old figures or on empty results may need updating.</p>
+<h4 id="check-your-data">Check your data</h4>
+<p>Run <code>php artisan ifrs:audit-balances</code>, which changes nothing, and go through what it lists. Foreign currency Balances that were edited after they were created may have been multiplied by their exchange rate, and transactions may have been over cleared. See <a href="/ifrs-docs/v7docs/balances/#auditing-balances">Auditing Balances</a>.</p>
+<h4 id="reported-figures-change-1">Reported figures change</h4>
+<ul>
+<li>End date without a start date - <code>AccountStatement</code>, <code>AccountSchedule</code> and <code>IncomeStatement</code> now start from the year of their end date. They came back empty for an earlier end date, and <code>AgingSchedule</code> was always empty before the current year.</li>
+<li>Schedules - <code>AccountSchedule</code> and <code>AgingSchedule</code> count only what had been cleared by their end date, so a schedule for a past date may show more outstanding.</li>
+<li><code>IncomeStatement::getResults()</code> - Results keep their sign, so a loss is negative rather than positive. <code>GROSS_PROFIT</code> no longer includes non operating revenue, so it is lower for anyone who has any, and agrees with <code>getSections()</code>.</li>
+<li><code>BalanceSheet::TOTAL_EQUITY</code> - Negative equity is reported as negative.</li>
+<li><code>$category-&gt;getAccountBalances()</code> - Opening balances are included when no start date is given.</li>
+</ul>
+<h4 id="errors-that-were-silent">Errors that were silent</h4>
+<ul>
+<li><code>EntityMismatch</code> - Passing an <code>$entity</code> other than that of the logged in user now throws this, where it used to come back empty or throw <code>MissingReportingPeriod</code>. See <a href="/ifrs-docs/v7docs/entities/">Entities</a>.</li>
+<li><code>OverClearance</code> - It now applies to fractions, where it only compared whole numbers.</li>
+<li><code>InvalidBalanceDate</code> - A new or re-dated Balance is now checked against its own reporting period rather than the current one.</li>
+<li><code>ClosedReportingPeriod</code> - It now applies to new Balances, and to changes to the amount or period of a Balance. Other edits to existing Balances are unaffected.</li>
+</ul>
+<h4 id="other-changes-1">Other changes</h4>
+<ul>
+<li><code>Balance::save()</code> translates only a new amount, so editing a Balance no longer changes it. A new value given to <code>balance</code> must be in the Balance&rsquo;s own currency.</li>
+<li><code>clearances</code> and <code>cleared_amount</code> are now correct on Transaction subclasses such as <code>ClientInvoice</code>, where they came back empty.</li>
+<li><code>Account::sectionBalances()</code> keeps Categories that share a name apart. The second is keyed <code>Name (id)</code>, so code looking a Category up by name gets the first.</li>
+<li><code>$reportingPeriod-&gt;transactionCurrencies()</code> is limited to the entity and ignores deleted transactions.</li>
+<li><code>Transaction::transactionNo()</code> counts only its own reporting period. If you have backdated transactions, a later number in that year could repeat one issued before this change.</li>
+<li><code>Assignment::bulkAssign()</code> no longer saves an Assignment of zero.</li>
+<li>The reports declare their properties, removing the deprecation notices on PHP 8.2 and above.</li>
 </ul>
 <h3 id="upgrading-to-71">Upgrading to 7.1</h3>
 <p>Update your <code>ekmungai/eloquent-ifrs</code> dependency to ^7.1 in your <code>composer.json</code> file. There are no breaking changes to the API and no migrations, but reported figures change.</p>

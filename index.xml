@@ -41,8 +41,8 @@ Versioning Scheme Like Laravel, Eloquent-IFRS follows Semantinc Versioning. This
       <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
       
       <guid>https://ekmungai.github.io/ifrs-docs/v7docs/release-notes/</guid>
-      <description>Eloquent-IFRS 7.1 makes reports honour their dates, and adds a command to repair Balances attached to the wrong year. See Upgrading to 7.1.
-Eloquent-IFRS 7.0 corrects the balances of entities whose financial year does not start in January, stores exchange rates with a configurable precision, stops the package creating or owning the application&amp;rsquo;s users table, and declares nullable parameters explicitly so that it loads without deprecation notices on PHP 8.</description>
+      <description>Eloquent-IFRS 7.2 corrects stored Balances and clearances, and reports that came back empty, stale or with the wrong sign. See Upgrading to 7.2.
+Eloquent-IFRS 7.1 makes reports honour their dates, and adds a command to repair Balances attached to the wrong year.</description>
     </item>
     
     <item>
@@ -1173,7 +1173,7 @@ Basic Journal Entry In a normal Journal Entry, all the Line Items are automatica
       <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
       
       <guid>https://ekmungai.github.io/ifrs-docs/v7docs/api/</guid>
-      <description>The API reference for version 7.1 of the Package can be found here.</description>
+      <description>The API reference for version 7.2 of the Package can be found here.</description>
     </item>
     
   </channel>

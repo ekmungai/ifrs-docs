@@ -311,8 +311,9 @@
 <p>An AgingSchedule constructor takes the following parameters:</p>
 <ul>
 <li><code>$accountType</code>: The type of account to retrieve outstanding balances for. Defaults to <code>Account::RECEIVABLE</code>.</li>
-<li><code>$currencyId</code>: The it of the currency object whose transactions should be included in the report. Defaults to the id of the Entity&rsquo;s reporting currency.</li>
-<li><code>$endDate</code>: The last date on which outstanding balances should be included in the report. Defaults to the current date.</li>
+<li><code>$endDate</code>: The date as at which balances are outstanding. Only transactions posted and clearances made by the end of that day count, and the report covers the reporting period of that date. Defaults to the current date.</li>
+<li><code>$currencyId</code>: The id of the currency object whose transactions should be included in the report. Defaults to the id of the Entity&rsquo;s reporting currency.</li>
+<li><code>$entity</code>: The Entity the report is for. Defaults to the entity of the logged in user. (See <a href="/ifrs-docs/v7docs/entities/">Entities</a>).</li>
 </ul>
 <h3 id="attributes">Attributes</h3>
 <ul>

@@ -326,7 +326,7 @@
 <li><code>ReportingPeriod::periodStart($date):</code> Retrieves the first date of the reporting period for the date given, and if none is given of the current date.</li>
 <li><code>ReportingPeriod::periodEnd($date):</code> Retrieves the last date of the reporting period for the date given, and if none is given of the current date.</li>
 <li><code>$reportingPeriod-&gt;attributes():</code> Presents the reporting period&rsquo;s attributes as an object. Useful for debugging.</li>
-<li><code>$reportingPeriod-&gt;transactionCurrencies():</code> Retrieves all foreign currencies used in transactions within the period.</li>
+<li><code>$reportingPeriod-&gt;transactionCurrencies():</code> Retrieves all foreign currencies used in the entity&rsquo;s transactions within the period.</li>
 <li><code>$reportingPeriod-&gt;prepareBalancesTranslation()</code> Create the foreign currency translation transactions for the period.</li>
 <li><code>$reportingPeriod-&gt;getTranslations():</code> Retrieves all foreign currency translation transactions for the period.</li>
 <li><code>$reportingPeriod-&gt;postTranslations():</code> Commits all foreign currency translation transactions for the period to the ledger.</li>
@@ -340,6 +340,7 @@
 <h3 id="constraints">Constraints</h3>
 <ul>
 <li><code>MissingReportingPeriod</code>: The Entity does not have a reporting period for the date given.</li>
+<li><code>EntityMismatch</code>: A reporting period was requested for an entity other than that of the logged in user.</li>
 <li><code>InvalidAccountType</code>: The account specified for posting forex translations must be of type <code>Account::EQUITY</code> (Other Comprehensive Income).</li>
 <li><code>InvalidPeriodStatus</code>: Forex translations can only be performed for a reporting period that is in the adjusting stage.</li>
 <li><code>MissingClosingRate</code>: The currency does not have a closing rate.</li>

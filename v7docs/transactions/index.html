@@ -317,7 +317,7 @@
 <li><code>currency</code>: The currency of the transaction, defaults to the reporting currency of the logged in user&rsquo;s entity.</li>
 <li><code>exchangeRate</code>: The exchange rate object valid at the time the transaction was made. Defaults to the logged in user&rsquo;s entity&rsquo;s default exchange rate.</li>
 <li><code>reference</code>: Optional further idenitifying information about the transaction. For example the LPO Number for a Client Invoice. Defaults to <code>null</code>.</li>
-<li><code>transaction_no</code>: The transaction number of the transaction. Defaults to a serially generated number of the form <code>TTYY/XXXXX</code>, where <code>TT</code> represents the transaction type, <code>YY</code> is the period count for the reporting period in which the transaction date falls, and <code>XXXXX</code>is a zero padded count of previously recorded transactions of the same type.</li>
+<li><code>transaction_no</code>: The transaction number of the transaction. Defaults to a serially generated number of the form <code>TTYY/XXXXX</code>, where <code>TT</code> represents the transaction type, <code>YY</code> is the period count for the reporting period in which the transaction date falls, and <code>XXXXX</code>is a zero padded count of previously recorded transactions of the same type in that reporting period.</li>
 <li><code>type</code>: The two character string representing the transaction type as defined by the Transaction class. (See <a href="#constants">Constants</a>).</li>
 <li><code>credited</code>: A boolean indicating whether the transaction should be posted in the credit side of the main account.</li>
 <li><code>compound</code>: A boolean indicating whether the (Journal Entry) transaction has compound entries.</li>
@@ -351,6 +351,7 @@
 <li><code>$transaction-&gt;getAssigned():</code> Retrieve an array of the transactions that are staged to be cleared by this transaction and their clearance amounts.</li>
 <li><code>$transaction-&gt;addAssigned():</code> Add a Transaction and its clearance amount to this transaction&rsquo;s staged transactions to be cleared.</li>
 <li><code>$transaction-&gt;processAssigned():</code> Create assignments for the transactions in the assigned array.</li>
+<li><code>$transaction-&gt;clearedAmountAsAt($date):</code> The amount that had been cleared by the end of the given date.</li>
 <li><code>$transaction-&gt;attributes():</code> Presents the transactions&rsquo;s attributes as an object. Useful for debugging.</li>
 <li><code>$transaction-&gt;toString():</code> The string representation of the Transaction object instance.</li>
 </ul>

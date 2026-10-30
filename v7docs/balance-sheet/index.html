@@ -311,7 +311,7 @@
 <p>An BalanceSheet constructor takes the following parameters:</p>
 <ul>
 <li><code>$endDate</code>: The last date on which account balances should be included in the report. Defaults to the last day of the current reporting period.</li>
-<li><code>$entity</code>: The Entity the report is for. Defaults to the entity of the logged in user.</li>
+<li><code>$entity</code>: The Entity the report is for. Defaults to the entity of the logged in user. (See <a href="/ifrs-docs/v7docs/entities/">Entities</a>).</li>
 </ul>
 <h3 id="attributes">Attributes</h3>
 <ul>
@@ -340,7 +340,7 @@
 <li><code>BalanceSheet::NET_ASSETS</code>: The net assets result.</li>
 <li><code>BalanceSheet::TOTAL_RECONCILIATION</code>: The reconciliation section total.</li>
 <li><code>BalanceSheet::NET_PROFIT</code>: The net profit result.</li>
-<li><code>BalanceSheet::TOTAL_EQUITY</code>: The equity section total.</li>
+<li><code>BalanceSheet::TOTAL_EQUITY</code>: The equity section total, including the net profit for the period. An entity whose liabilities exceed its assets has negative equity.</li>
 </ul>
 
 </div>

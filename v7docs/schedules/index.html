@@ -312,7 +312,7 @@
 <ul>
 <li><code>$accountId</code>: The Id of the Account object whose schedule is being constructed.</li>
 <li><code>$currencyId</code>: The Id of the currency of the transactions to be included in the schedule. Defaults to the reporting currency of the entity of the logged in user.</li>
-<li><code>$endDate</code>: The last date on which transactions posted to the account should be included in the schedule. Defaults to the current date.</li>
+<li><code>$endDate</code>: The date as at which the schedule is drawn up. Transactions are included from the start of the reporting period of that date, and an amount cleared after it is still outstanding. Defaults to the current date.</li>
 </ul>
 <h3 id="attributes">Attributes</h3>
 <ul>

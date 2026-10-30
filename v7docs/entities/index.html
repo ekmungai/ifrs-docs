@@ -329,11 +329,16 @@
 <li><code>$entity-&gt;attributes()</code>: Presents the entity&rsquo;s attributes as an object. Useful for debugging.</li>
 <li><code>$entity-&gt;toString():</code> The string representation of the Entity object instance.</li>
 <li><code>$entity-&gt;localizeAmount():</code> Convert the given amount to the given currency and locale.</li>
+<li><code>$entity-&gt;assertAccessible():</code> Confirm that the logged in user can work with the entity, throwing <code>EntityMismatch</code> if not.</li>
 </ul>
+<h3 id="working-with-an-entity">Working with an Entity</h3>
+<p>Every query in the package is limited to the entity of the logged in user. Reports and methods that take an <code>$entity</code> therefore only accept that entity, and throw <code>EntityMismatch</code> for any other, rather than coming back empty. With nobody logged in, as in a console command, any entity can be passed.</p>
+<p>Reporting across entities is not currently supported.</p>
 <h3 id="constraints">Constraints</h3>
 <ul>
 <li><code>MissingReportingCurrency</code>: The Entity does not have a reporing currency.</li>
 <li><code>UnconfiguredLocale</code>: The Entity&rsquo;s locale does not exist in the configuration.</li>
+<li><code>EntityMismatch</code>: The Entity is not the entity of the logged in user.</li>
 </ul>
 <hr>
 

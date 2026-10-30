@@ -310,9 +310,9 @@
 <h3 id="construction">Construction</h3>
 <p>An IncomeStatement constructor takes the following parameters:</p>
 <ul>
-<li><code>$startDate</code>: The first date on which account balances should be included in the report. Defaults to the first day of the current reporting period.</li>
+<li><code>$startDate</code>: The first date on which account balances should be included in the report. Defaults to the first day of the reporting period of <code>$endDate</code>.</li>
 <li><code>$endDate</code>: The last date on which account balances should be included in the report. Defaults to the last day of the current reporting period.</li>
-<li><code>$entity</code>: The Entity the report is for. Defaults to the entity of the logged in user.</li>
+<li><code>$entity</code>: The Entity the report is for. Defaults to the entity of the logged in user. (See <a href="/ifrs-docs/v7docs/entities/">Entities</a>).</li>
 </ul>
 <h3 id="attributes">Attributes</h3>
 <ul>
@@ -326,7 +326,7 @@
 <ul>
 <li><code>IncomeStatement::getAccountTypes</code>: Retrieve the account types associated with the income statement.</li>
 <li><code>IncomeStatement::getBalance</code>: Retrieve the total balance for the given account types for the given period.</li>
-<li><code>IncomeStatement::getResults</code>: Retrieve the income statement result for the given month and year.</li>
+<li><code>IncomeStatement::getResults</code>: Retrieve the income statement result for the given month and year. Results keep their sign, so a loss is negative, and they agree with those of <code>$incomeStatement-&gt;getSections()</code>.</li>
 <li><code>$incomeStatement-&gt;toString():</code> Prints out a summarized version of the report as a string. <a href="">!! IMPORTANT !!</a> this method is only intended for debugging and should never be used in production.</li>
 <li><code>$incomeStatement-&gt;getSections():</code> Retrieves the balances of the sections of the report, grouped by the categories therein.</li>
 <li><code>$incomeStatement-&gt;attributes():</code> Presents the report&rsquo;s attributes as an array. Useful for debugging.</li>
