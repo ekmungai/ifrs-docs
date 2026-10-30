@@ -5,6 +5,6 @@ weight: 26
 heading: 'API Reference'
 ---
 
-The API reference for version 7.1 of the Package can be found [here](/ifrs-docs/v7.1.0).
+The API reference for version 7.2 of the Package can be found [here](/ifrs-docs/v7.2.0).
 
 ***
