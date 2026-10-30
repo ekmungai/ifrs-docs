@@ -20,7 +20,7 @@ Assignments are the package's mechanism for relating transactions which have opp
 + `Assignment::ASSIGNABLES`: Transactions that can be assigned (can clear other transactions).
 
 ### Methods
-+ `Assignment::bulkAssign($transaction):` Assign all clearable transactions that are outstanding for the main account of the given transaction on a FIFO basis until the balance of the account is exhausted. 
++ `Assignment::bulkAssign($transaction):` Assign all clearable transactions that are outstanding for the main account of the given transaction on a FIFO basis until the balance of the transaction is exhausted. 
 + `$assignment->attributes():` Presents the assignment's attributes as an object. Useful for debugging. 
 + `$assignment->toString():` The string representation of the Assignment object instance. 
 

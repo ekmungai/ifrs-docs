@@ -10,7 +10,7 @@ The Trial Balance is a listing of all accounts in the chart of accounts, grouped
 A TrialBalance only requires the year to be constructed.
 
 + `$year`: The `calendar_year` of the reporting period whose account balances should be included in the report. Defaults to that of the current reporting period. (See [Reporting Periods]({{< relref "reporting-periods.md" >}})).
-+ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user.
++ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user. (See [Entities]({{< relref "entities.md" >}})).
 
 ### Attributes
 + `$trialBalance->entity`: The Entity object associated with the report.

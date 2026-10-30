@@ -10,7 +10,7 @@ Account Schedules are similar to statements in that the present chronological re
 An AccountSchedule constructor takes the following parameters:
 + `$accountId`: The Id of the Account object whose schedule is being constructed.
 + `$currencyId`: The Id of the currency of the transactions to be included in the schedule. Defaults to the reporting currency of the entity of the logged in user.
-+ `$endDate`: The last date on which transactions posted to the account should be included in the schedule. Defaults to the current date.
++ `$endDate`: The date as at which the schedule is drawn up. Transactions are included from the start of the reporting period of that date, and an amount cleared after it is still outstanding. Defaults to the current date.
 
 ### Attributes
 + `$schedule->account`: The Account object associated with the schedule.

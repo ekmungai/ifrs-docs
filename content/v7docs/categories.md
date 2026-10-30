@@ -12,7 +12,7 @@ Categories are a means of grouping together several accounts of the same type. T
 + `accounts`: All the accounts belonging to the category.
 
 ### Methods
-+ `$category->getAccountBalances($startDate, $endDate):` Retrieve an array of the balances of the accounts belonging to the category. 
++ `$category->getAccountBalances($startDate, $endDate):` Retrieve an array of the balances of the accounts belonging to the category. `$startDate` defaults to the first day of the reporting period of `$endDate`, and opening balances are included when the two coincide. 
 + `$category->attributes():` Presents the category's attributes as an object. Useful for debugging. 
 + `$category->toString():` The string representation of the Category object instance. 
 

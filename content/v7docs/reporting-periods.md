@@ -24,7 +24,7 @@ A financial year is labelled by the calendar year it starts in. For an entity wi
 + `ReportingPeriod::periodStart($date):` Retrieves the first date of the reporting period for the date given, and if none is given of the current date. 
 + `ReportingPeriod::periodEnd($date):` Retrieves the last date of the reporting period for the date given, and if none is given of the current date. 
 + `$reportingPeriod->attributes():` Presents the reporting period's attributes as an object. Useful for debugging. 
-+ `$reportingPeriod->transactionCurrencies():` Retrieves all foreign currencies used in transactions within the period. 
++ `$reportingPeriod->transactionCurrencies():` Retrieves all foreign currencies used in the entity's transactions within the period. 
 + `$reportingPeriod->prepareBalancesTranslation()` Create the foreign currency translation transactions for the period.
 + `$reportingPeriod->getTranslations():` Retrieves all foreign currency translation transactions for the period. 
 + `$reportingPeriod->postTranslations():` Commits all foreign currency translation transactions for the period to the ledger. 
@@ -36,6 +36,7 @@ A financial year is labelled by the calendar year it starts in. For an entity wi
 
 ### Constraints
 + `MissingReportingPeriod`: The Entity does not have a reporting period for the date given.
++ `EntityMismatch`: A reporting period was requested for an entity other than that of the logged in user.
 + `InvalidAccountType`: The account specified for posting forex translations must be of type `Account::EQUITY` (Other Comprehensive Income).
 + `InvalidPeriodStatus`: Forex translations can only be performed for a reporting period that is in the adjusting stage.
 + `MissingClosingRate`: The currency does not have a closing rate.

@@ -17,7 +17,7 @@ heading: 'Transactions'
 + `currency`: The currency of the transaction, defaults to the reporting currency of the logged in user's entity.
 + `exchangeRate`: The exchange rate object valid at the time the transaction was made. Defaults to the logged in user's entity's default exchange rate.
 + `reference`: Optional further idenitifying information about the transaction. For example the LPO Number for a Client Invoice. Defaults to `null`.
-+ `transaction_no`: The transaction number of the transaction. Defaults to a serially generated number of the form `TTYY/XXXXX`, where `TT` represents the transaction type, `YY` is the period count for the reporting period in which the transaction date falls, and `XXXXX`is a zero padded count of previously recorded transactions of the same type.
++ `transaction_no`: The transaction number of the transaction. Defaults to a serially generated number of the form `TTYY/XXXXX`, where `TT` represents the transaction type, `YY` is the period count for the reporting period in which the transaction date falls, and `XXXXX`is a zero padded count of previously recorded transactions of the same type in that reporting period.
 + `type`: The two character string representing the transaction type as defined by the Transaction class. (See [Constants]({{< relref "#constants" >}})).
 + `credited`: A boolean indicating whether the transaction should be posted in the credit side of the main account.
 + `compound`: A boolean indicating whether the (Journal Entry) transaction has compound entries.
@@ -51,6 +51,7 @@ NB: A transaction is not posted to the Ledger when it is saved. It still has onl
 + `$transaction->getAssigned():` Retrieve an array of the transactions that are staged to be cleared by this transaction and their clearance amounts.  
 + `$transaction->addAssigned():` Add a Transaction and its clearance amount to this transaction's staged transactions to be cleared.  
 + `$transaction->processAssigned():` Create assignments for the transactions in the assigned array. 
++ `$transaction->clearedAmountAsAt($date):` The amount that had been cleared by the end of the given date. 
 + `$transaction->attributes():` Presents the transactions's attributes as an object. Useful for debugging. 
 + `$transaction->toString():` The string representation of the Transaction object instance. 
 

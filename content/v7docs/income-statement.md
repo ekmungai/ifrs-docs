@@ -8,9 +8,9 @@ The Income Statement, also known as the Profit and Loss statement shows the perf
 
 ### Construction
 An IncomeStatement constructor takes the following parameters:
-+ `$startDate`: The first date on which account balances should be included in the report. Defaults to the first day of the current reporting period.
++ `$startDate`: The first date on which account balances should be included in the report. Defaults to the first day of the reporting period of `$endDate`.
 + `$endDate`: The last date on which account balances should be included in the report. Defaults to the last day of the current reporting period.
-+ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user.
++ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user. (See [Entities]({{< relref "entities.md" >}})).
 
 ### Attributes
 + `$incomeStatement->entity`: The Entity object associated with the report.
@@ -22,7 +22,7 @@ An IncomeStatement constructor takes the following parameters:
 ### Methods
 + `IncomeStatement::getAccountTypes`: Retrieve the account types associated with the income statement.
 + `IncomeStatement::getBalance`: Retrieve the total balance for the given account types for the given period.
-+ `IncomeStatement::getResults`: Retrieve the income statement result for the given month and year.
++ `IncomeStatement::getResults`: Retrieve the income statement result for the given month and year. Results keep their sign, so a loss is negative, and they agree with those of `$incomeStatement->getSections()`.
 + `$incomeStatement->toString():` Prints out a summarized version of the report as a string. [!! IMPORTANT !!]({{< relref "#" >}}) this method is only intended for debugging and should never be used in production. 
 + `$incomeStatement->getSections():` Retrieves the balances of the sections of the report, grouped by the categories therein. 
 + `$incomeStatement->attributes():` Presents the report's attributes as an array. Useful for debugging. 

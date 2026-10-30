@@ -9,8 +9,9 @@ The Aging Schedule shows amounts receivable frome clients and payable to supplie
 ### Construction
 An AgingSchedule constructor takes the following parameters:
 + `$accountType`: The type of account to retrieve outstanding balances for. Defaults to `Account::RECEIVABLE`.
-+ `$currencyId`: The it of the currency object whose transactions should be included in the report. Defaults to the id of the Entity's reporting currency.
-+ `$endDate`: The last date on which outstanding balances should be included in the report. Defaults to the current date.
++ `$endDate`: The date as at which balances are outstanding. Only transactions posted and clearances made by the end of that day count, and the report covers the reporting period of that date. Defaults to the current date.
++ `$currencyId`: The id of the currency object whose transactions should be included in the report. Defaults to the id of the Entity's reporting currency.
++ `$entity`: The Entity the report is for. Defaults to the entity of the logged in user. (See [Entities]({{< relref "entities.md" >}})).
 
 ### Attributes
 + `$agingSchedule->entity`: The Entity object associated with the report.

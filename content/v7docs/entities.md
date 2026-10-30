@@ -26,8 +26,16 @@ The entity is the centerpiece around which the transactions in the package are r
 + `$entity->attributes()`: Presents the entity's attributes as an object. Useful for debugging. 
 + `$entity->toString():` The string representation of the Entity object instance. 
 + `$entity->localizeAmount():` Convert the given amount to the given currency and locale. 
++ `$entity->assertAccessible():` Confirm that the logged in user can work with the entity, throwing `EntityMismatch` if not. 
+
+### Working with an Entity
+
+Every query in the package is limited to the entity of the logged in user. Reports and methods that take an `$entity` therefore only accept that entity, and throw `EntityMismatch` for any other, rather than coming back empty. With nobody logged in, as in a console command, any entity can be passed.
+
+Reporting across entities is not currently supported.
 
 ### Constraints
 + `MissingReportingCurrency`: The Entity does not have a reporing currency. 
 + `UnconfiguredLocale`: The Entity's locale does not exist in the configuration. 
++ `EntityMismatch`: The Entity is not the entity of the logged in user.
 ***
