@@ -1,0 +1,40 @@
+---
+title: 'Balance Sheet'
+date: 2018-11-28T15:14:39+10:00
+weight: 22
+---
+
+The Balance Sheet, also known as the Statement of Financial position shows the financial health of the entity by comparing the combined balances of asset accounts to those of liability and equity accounts. 
+
+### Construction
+An BalanceSheet constructor takes the following parameters:
+
++ `$period`: An array containing the last date on which account balances should be included in the report. Defaults to the current date.
+
+### Attributes
++ `$balanceSheet->entity`: The Entity object associated with the report.
++ `$balanceSheet->reportingPeriod`: The ReportingPeriod object associated with the report.
++ `$balanceSheet->period`: The period (endDate) covered by the report.
++ `$balanceSheet->balances`: The balances for the sections report.
++ `$balanceSheet->accounts`: An array of the accounts included in the report grouped by their categories.
+
+### Methods
++ `BalanceSheet::getAccountTypes`: Retrieve the account types associated with the balance sheet.
++ `$balanceSheet->toString():` Prints out a summarized version of the report as a string. [!! IMPORTANT !!]({{< relref "#" >}}) this method is only intended for debugging and should never be used in production. 
++ `$balanceSheet->getSections():` Retrieves the balances of the sections of the report, grouped by the categories therein. 
++ `$balanceSheet->getIncomeStatementSections():` Retrieves the balances of the income statement accounts for the year. 
++ `$balanceSheet->getSections():` Retrieves the balances of the balance sheet accounts for the year. 
++ `$balanceSheet->getBalanceSheetSections():` Presents the report's attributes as an array. Useful for debugging. 
+
+### Constants
++ `BalanceSheet::TITLE`: The title of the report. Defaults to Balance Sheet.
++ `BalanceSheet::ASSETS`: The Assets section of the report. Includes both Current and Non-current assets. 
++ `BalanceSheet::LIABILITIES`: The Liabilities section of the report. Includes both Current and Non-current liabilities.
++ `BalanceSheet::EQUITY`: The Equity section of the report. 
++ `BalanceSheet::RECONCILIATION`: The Reconciliation section of the report. 
++ `BalanceSheet::TOTAL_ASSETS`: The assets section total.
++ `BalanceSheet::TOTAL_LIABILITIES`: The liabilities section total.
++ `BalanceSheet::NET_ASSETS`: The net assets result.
++ `BalanceSheet::TOTAL_RECONCILIATION`: The reconciliation section total.
++ `BalanceSheet::NET_PROFIT`: The net profit result.
++ `BalanceSheet::TOTAL_EQUITY`: The equity section total.

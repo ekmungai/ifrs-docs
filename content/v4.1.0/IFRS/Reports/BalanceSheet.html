@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>IFRS\Reports\BalanceSheet | Eloquent IFRS API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:IFRS_Reports_BalanceSheet" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#" method="GET">
+                <select id="version-switcher" name="version">
+                                            <option value="../../../v2.0.1/index.html" data-version="v2.0.1">Version 2</option>
+                                            <option value="../../../v3.1.4/index.html" data-version="v3.1.4">Version 3</option>
+                                            <option value="../../../v4.1.0/index.html" data-version="v4.1.0">Version 4</option>
+                                    </select>
+            </form>
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Eloquent IFRS API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../IFRS.html">IFRS</a></li><li class="backslash">\</li><li><a href="../../IFRS/Reports.html">Reports</a></li><li class="backslash">\</li><li>BalanceSheet</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            BalanceSheet
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>BalanceSheet</strong>        extends <a href="../../IFRS/Reports/FinancialStatement.html"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a>
+</p>
+
+        
+    
+
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>TITLE</td>
+                <td class="last">
+                    <p><em>Balance Sheet Title</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>ASSETS</td>
+                <td class="last">
+                    <p><em>Balance Sheet Sections</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>LIABILITIES</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>EQUITY</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>RECONCILIATION</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>TOTAL_ASSETS</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>TOTAL_LIABILITIES</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>NET_ASSETS</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>TOTAL_RECONCILIATION</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>NET_PROFIT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>TOTAL_EQUITY</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_entity">
+                                        protected                                        <a href="../../IFRS/Models/Entity.html"><abbr title="IFRS\Models\Entity">Entity</abbr></a>
+                </td>
+                <td>$entity</td>
+                <td class="last">Financial Statement Entity.</td>
+                <td><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#property_entity"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_reportingPeriod">
+                                                                                string
+                </td>
+                <td>$reportingPeriod</td>
+                <td class="last">Financial Statement Reporting Period.</td>
+                <td><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#property_reportingPeriod"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_balances">
+                                                                                array
+                </td>
+                <td>$balances</td>
+                <td class="last">Financial Statement balances.</td>
+                <td><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#property_balances"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_accounts">
+                                                                                array
+                </td>
+                <td>$accounts</td>
+                <td class="last">Financial Statement accounts.</td>
+                <td><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#property_accounts"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_totals">
+                                                                                array
+                </td>
+                <td>$totals</td>
+                <td class="last">Financial Statement totals.</td>
+                <td><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#property_totals"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_results">
+                                                                                array
+                </td>
+                <td>$results</td>
+                <td class="last">Financial Statement results.</td>
+                <td><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#property_results"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_period">
+                                                                                array
+                </td>
+                <td>$period</td>
+                <td class="last">Balance Sheet period.</td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printTitle">printTitle</a>(string $statement, string $title)
+        
+                                            <p>Print Statement Title</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#method_printTitle"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printSection">printSection</a>(string $section, string $statement, string $indent, int $amountFactor = 1)
+        
+                                            <p>Print Statement Section</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#method_printSection"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printTotal">printTotal</a>(string $section, string $statement, string $indent, int $amountFactor = 1, int $indentFactor = 1)
+        
+                                            <p>Print Statement Total</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#method_printTotal"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printResult">printResult</a>(string $result, string $statement, string $indent, int $indentFactor)
+        
+                                            <p>Print Statement Result</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Reports/FinancialStatement.html#method_printResult"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $endDate = null)
+        
+                                            <p>Construct Balance Sheet as at the given end date</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_attributes">attributes</a>()
+        
+                                            <p>Print Income Statement attributes.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSections">getSections</a>($startDate = null, $endDate = null, $fullbalance = true)
+        
+                                            <p>Get Balance Sheet Sections.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAccountTypes">getAccountTypes</a>()
+        
+                                            <p>Get Balance Sheet Account Types.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_toString">toString</a>()
+        
+                                            <p>Print Balance Sheet.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_printTitle">
+        <div class="location">in <a href="../../IFRS/Reports/FinancialStatement.html#method_printTitle"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a> at         line 81</div>
+        <code>            protected        string
+    <strong>printTitle</strong>(string $statement, string $title)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print Statement Title</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$title</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printSection">
+        <div class="location">in <a href="../../IFRS/Reports/FinancialStatement.html#method_printSection"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a> at         line 112</div>
+        <code>            protected        string
+    <strong>printSection</strong>(string $section, string $statement, string $indent, int $amountFactor = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print Statement Section</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$section</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$indent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$amountFactor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printTotal">
+        <div class="location">in <a href="../../IFRS/Reports/FinancialStatement.html#method_printTotal"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a> at         line 139</div>
+        <code>            protected        string
+    <strong>printTotal</strong>(string $section, string $statement, string $indent, int $amountFactor = 1, int $indentFactor = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print Statement Total</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$section</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$indent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$amountFactor</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$indentFactor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printResult">
+        <div class="location">in <a href="../../IFRS/Reports/FinancialStatement.html#method_printResult"><abbr title="IFRS\Reports\FinancialStatement">FinancialStatement</abbr></a> at         line 161</div>
+        <code>            protected        string
+    <strong>printResult</strong>(string $result, string $statement, string $indent, int $indentFactor)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print Statement Result</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$result</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$indent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$indentFactor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 72</div>
+        <code>                    
+    <strong>__construct</strong>(string $endDate = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Construct Balance Sheet as at the given end date</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$endDate</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_attributes">
+        <div class="location">at         line 108</div>
+        <code>                    array
+    <strong>attributes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print Income Statement attributes.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSections">
+        <div class="location">at         line 116</div>
+        <code>                    array
+    <strong>getSections</strong>($startDate = null, $endDate = null, $fullbalance = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Balance Sheet Sections.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$startDate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$endDate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$fullbalance</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAccountTypes">
+        <div class="location">at         line 57</div>
+        <code>        static            array
+    <strong>getAccountTypes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Balance Sheet Account Types.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toString">
+        <div class="location">at         line 153</div>
+        <code>                    void
+    <strong>toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print Balance Sheet.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

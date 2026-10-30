@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>IFRS\Transactions\JournalEntry | Eloquent IFRS API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:IFRS_Transactions_JournalEntry" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#" method="GET">
+                <select id="version-switcher" name="version">
+                                            <option value="../../../v2.0.1/index.html" data-version="v2.0.1">Version 2</option>
+                                            <option value="../../../v3.1.4/index.html" data-version="v3.1.4">Version 3</option>
+                                            <option value="../../../v4.1.0/index.html" data-version="v4.1.0">Version 4</option>
+                                    </select>
+            </form>
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Eloquent IFRS API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../IFRS.html">IFRS</a></li><li class="backslash">\</li><li><a href="../../IFRS/Transactions.html">Transactions</a></li><li class="backslash">\</li><li>JournalEntry</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            JournalEntry
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>JournalEntry</strong>        extends <a href="../../IFRS/Models/Transaction.html"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a>        implements
+        <a href="../../IFRS/Interfaces/Assignable.html"><abbr title="IFRS\Interfaces\Assignable">Assignable</abbr></a>, <a href="../../IFRS/Interfaces/Clearable.html"><abbr title="IFRS\Interfaces\Clearable">Clearable</abbr></a>, <a href="../../IFRS/Interfaces/Fetchable.html"><abbr title="IFRS\Interfaces\Fetchable">Fetchable</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Class JournalEntry</p>                                </div>
+    
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/Assigning.html"><abbr title="IFRS\Traits\Assigning">Assigning</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/Clearing.html"><abbr title="IFRS\Traits\Clearing">Clearing</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/Fetching.html"><abbr title="IFRS\Traits\Fetching">Fetching</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <abbr title="Parental\HasParent">HasParent</abbr>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/Segregating.html"><abbr title="IFRS\Traits\Segregating">Segregating</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <abbr title="Illuminate\Database\Eloquent\SoftDeletes">SoftDeletes</abbr>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/Recycling.html"><abbr title="IFRS\Traits\Recycling">Recycling</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/Clearing.html"><abbr title="IFRS\Traits\Clearing">Clearing</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/Assigning.html"><abbr title="IFRS\Traits\Assigning">Assigning</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../IFRS/Traits/ModelTablePrefix.html"><abbr title="IFRS\Traits\ModelTablePrefix">ModelTablePrefix</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+            </div>
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>MODELNAME</td>
+                <td class="last">
+                    <p><em>Transaction Model Name</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CS</td>
+                <td class="last">
+                    <p><em>Transaction Types</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>IN</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CN</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>RC</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CP</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>BL</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>DN</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>PY</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CE</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>JN</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>PREFIX</td>
+                <td class="last">
+                    <p><em>Transaction Number prefix</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_fillable">
+                                        protected                                        array
+                </td>
+                <td>$fillable</td>
+                <td class="last">The attributes that are mass assignable.</td>
+                <td><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#property_fillable"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dates">
+                                        protected                                        
+                </td>
+                <td>$dates</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#property_dates"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entity">
+                                                                                <abbr title="IFRS\Transactions\Entity">Entity</abbr>
+                </td>
+                <td>$entity</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_exchangeRate">
+                                                                                <abbr title="IFRS\Transactions\ExchangeRate">ExchangeRate</abbr>
+                </td>
+                <td>$exchangeRate</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_account">
+                                                                                <abbr title="IFRS\Transactions\Account">Account</abbr>
+                </td>
+                <td>$account</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currency">
+                                                                                <abbr title="IFRS\Transactions\Currency">Currency</abbr>
+                </td>
+                <td>$currency</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_transaction_date">
+                                                                                <abbr title="Carbon\Carbon">Carbon</abbr>
+                </td>
+                <td>$transaction_date</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#property_transaction_date"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_reference">
+                                                                                string
+                </td>
+                <td>$reference</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_transaction_no">
+                                                                                string
+                </td>
+                <td>$transaction_no</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_transaction_type">
+                                                                                string
+                </td>
+                <td>$transaction_type</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_narration">
+                                                                                string
+                </td>
+                <td>$narration</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_credited">
+                                                                                bool
+                </td>
+                <td>$credited</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_amount">
+                                                                                float
+                </td>
+                <td>$amount</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_destroyed_at">
+                                                                                <abbr title="IFRS\Transactions\Carbon">Carbon</abbr>
+                </td>
+                <td>$destroyed_at</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_deleted_at">
+                                                                                <abbr title="IFRS\Transactions\Carbon">Carbon</abbr>
+                </td>
+                <td>$deleted_at</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_date">
+                                                                                <abbr title="IFRS\Transactions\Carbon">Carbon</abbr>
+                </td>
+                <td>$date</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_bootSegregating">bootSegregating</a>()
+        
+                                            <p>Register EntityScope for Model.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Segregating.html#method_bootSegregating"><abbr title="IFRS\Traits\Segregating">Segregating</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\HasOne">HasOne</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_entity">entity</a>()
+        
+                                            <p>Model's Parent Entity.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Segregating.html#method_entity"><abbr title="IFRS\Traits\Segregating">Segregating</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_bootRecycling">bootRecycling</a>()
+        
+                                            <p>Model recycling events.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Recycling.html#method_bootRecycling"><abbr title="IFRS\Traits\Recycling">Recycling</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\MorphMany">MorphMany</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_recycled">recycled</a>()
+        
+                                            <p>Recycled Model records.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Recycling.html#method_recycled"><abbr title="IFRS\Traits\Recycling">Recycling</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClearedAmountAttribute">getClearedAmountAttribute</a>()
+        
+                                            <p>Cleared Transaction amount.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Clearing.html#method_getClearedAmountAttribute"><abbr title="IFRS\Traits\Clearing">Clearing</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\MorphMany">MorphMany</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clearances">clearances</a>()
+        
+                                            <p>Cleared Model records.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Clearing.html#method_clearances"><abbr title="IFRS\Traits\Clearing">Clearing</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getBalanceAttribute">getBalanceAttribute</a>()
+        
+                                            <p>Balance Remaining on Transaction.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Assigning.html#method_getBalanceAttribute"><abbr title="IFRS\Traits\Assigning">Assigning</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTable">getTable</a>()
+        
+                                            <p>Determine the model table name</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/ModelTablePrefix.html#method_getTable"><abbr title="IFRS\Traits\ModelTablePrefix">ModelTablePrefix</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>($attributes = [])
+        
+                                            <p>Construct new JournalEntry</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClass">getClass</a>(string $type)
+        
+                                            <p>Get Transaction Class</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getClass"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getType">getType</a>(string $type)
+        
+                                            <p>Get Human Readable Transaction type</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getType"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTypes">getTypes</a>(array $types)
+        
+                                            <p>Get Human Readable Transaction types</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getTypes"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_transactionNo">transactionNo</a>(string $type, <abbr title="Carbon\Carbon">Carbon</abbr> $transaction_date = null)
+        
+                                            <p>The next Transaction number for the transaction type and transaction_date.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_transactionNo"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_toString">toString</a>($type = false)
+        
+                                            <p>Instance Identifier.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_toString"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_lineItems">lineItems</a>()
+        
+                                            <p>Transaction Saved Line Items.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_lineItems"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ledgers">ledgers</a>()
+        
+                                            <p>Transaction Ledgers.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_ledgers"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_currency">currency</a>()
+        
+                                            <p>Transaction Currency.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_currency"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_account">account</a>()
+        
+                                            <p>Transaction Account.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_account"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_exchangeRate">exchangeRate</a>()
+        
+                                            <p>Transaction Exchange Rate.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_exchangeRate"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_assignments">assignments</a>()
+        
+                                            <p>Transaction Assignments.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_assignments"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTypeAttribute">getTypeAttribute</a>()
+        
+                                            <p>Instance Type Translator.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getTypeAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIsPostedAttribute">getIsPostedAttribute</a>()
+        
+                                            <p>is_posted analog for Assignment model.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getIsPostedAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIsCreditedAttribute">getIsCreditedAttribute</a>()
+        
+                                            <p>is_credited analog for Assignment model.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getIsCreditedAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClearedTypeAttribute">getClearedTypeAttribute</a>()
+        
+                                            <p>Cleared Object type.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getClearedTypeAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    float
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAmountAttribute">getAmountAttribute</a>()
+        
+                                            <p>amount analog for Assignment model.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getAmountAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAssignableAttribute">getAssignableAttribute</a>()
+        
+                                            <p>Transaction is assignable predicate.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getAssignableAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClearableAttribute">getClearableAttribute</a>()
+        
+                                            <p>Transaction is clearable predicate.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getClearableAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDateAttribute">getDateAttribute</a>()
+        
+                                            <p>Transaction date.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getDateAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_attributes">attributes</a>()
+        
+                                            <p>Transaction attributes.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_attributes"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLineItems">getLineItems</a>()
+        
+                                            <p>Get Transaction LineItems.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getLineItems"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addLineItem">addLineItem</a>(<a href="../../IFRS/Models/LineItem.html"><abbr title="IFRS\Models\LineItem">LineItem</abbr></a> $lineItem)
+        
+                                            <p>Add LineItem to Transaction LineItems.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_addLineItem"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeLineItem">removeLineItem</a>(<a href="../../IFRS/Models/LineItem.html"><abbr title="IFRS\Models\LineItem">LineItem</abbr></a> $lineItem)
+        
+                                            <p>Remove LineItem from Transaction LineItems.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_removeLineItem"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAssigned">getAssigned</a>()
+        
+                                            <p>Get this Transaction's assigned Transactions.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getAssigned"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addAssigned">addAssigned</a>(array $toBeAssigned)
+        
+                                            <p>Add Transaction to this Transaction's assigned Transactions.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_addAssigned"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_processAssigned">processAssigned</a>()
+        
+                                            <p>Create assignments for the assigned transactions being staged.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_processAssigned"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_save">save</a>(array $options = [])
+        
+                                            <p>Relate LineItems to Transaction.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_save"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_post">post</a>()
+        
+                                            <p>Post Transaction to the Ledger.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_post"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_delete">delete</a>()
+        
+                                            <p>Check Transaction Relationships.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_delete"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getHasIntegrityAttribute">getHasIntegrityAttribute</a>()
+        
+                                            <p>Check Transaction Integrity.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Models/Transaction.html#method_getHasIntegrityAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<abbr title="Illuminate\Support\Collection">Collection</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetch">fetch</a>(<abbr title="Carbon\Carbon">Carbon</abbr> $startTime = null, <abbr title="Carbon\Carbon">Carbon</abbr> $endTime = null, <a href="../../IFRS/Models/Account.html"><abbr title="IFRS\Models\Account">Account</abbr></a> $account = null, <a href="../../IFRS/Models/Currency.html"><abbr title="IFRS\Models\Currency">Currency</abbr></a> $currency = null)
+        
+                                            <p>Fetch Transactions given the filters</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../IFRS/Traits/Fetching.html#method_fetch"><abbr title="IFRS\Traits\Fetching">Fetching</abbr></a></small></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_bootSegregating">
+        <div class="location">in <a href="../../IFRS/Traits/Segregating.html#method_bootSegregating"><abbr title="IFRS\Traits\Segregating">Segregating</abbr></a> at         line 31</div>
+        <code>        static            null
+    <strong>bootSegregating</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Register EntityScope for Model.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_entity">
+        <div class="location">in <a href="../../IFRS/Traits/Segregating.html#method_entity"><abbr title="IFRS\Traits\Segregating">Segregating</abbr></a> at         line 56</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\HasOne">HasOne</abbr>
+    <strong>entity</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Model's Parent Entity.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\HasOne">HasOne</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bootRecycling">
+        <div class="location">in <a href="../../IFRS/Traits/Recycling.html#method_bootRecycling"><abbr title="IFRS\Traits\Recycling">Recycling</abbr></a> at         line 28</div>
+        <code>        static            void
+    <strong>bootRecycling</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Model recycling events.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recycled">
+        <div class="location">in <a href="../../IFRS/Traits/Recycling.html#method_recycled"><abbr title="IFRS\Traits\Recycling">Recycling</abbr></a> at         line 73</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\MorphMany">MorphMany</abbr>
+    <strong>recycled</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Recycled Model records.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\MorphMany">MorphMany</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClearedAmountAttribute">
+        <div class="location">in <a href="../../IFRS/Traits/Clearing.html#method_getClearedAmountAttribute"><abbr title="IFRS\Traits\Clearing">Clearing</abbr></a> at         line 25</div>
+        <code>                    
+    <strong>getClearedAmountAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Cleared Transaction amount.</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearances">
+        <div class="location">in <a href="../../IFRS/Traits/Clearing.html#method_clearances"><abbr title="IFRS\Traits\Clearing">Clearing</abbr></a> at         line 41</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\MorphMany">MorphMany</abbr>
+    <strong>clearances</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Cleared Model records.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\MorphMany">MorphMany</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBalanceAttribute">
+        <div class="location">in <a href="../../IFRS/Traits/Assigning.html#method_getBalanceAttribute"><abbr title="IFRS\Traits\Assigning">Assigning</abbr></a> at         line 18</div>
+        <code>                    
+    <strong>getBalanceAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Balance Remaining on Transaction.</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTable">
+        <div class="location">in <a href="../../IFRS/Traits/ModelTablePrefix.html#method_getTable"><abbr title="IFRS\Traits\ModelTablePrefix">ModelTablePrefix</abbr></a> at         line 22</div>
+        <code>                    
+    <strong>getTable</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determine the model table name</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 63</div>
+        <code>                    
+    <strong>__construct</strong>($attributes = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Construct new JournalEntry</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$attributes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClass">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getClass"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 217</div>
+        <code>        static            string
+    <strong>getClass</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Transaction Class</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getType">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getType"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 240</div>
+        <code>        static            string
+    <strong>getType</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Human Readable Transaction type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTypes">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getTypes"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 252</div>
+        <code>        static            array
+    <strong>getTypes</strong>(array $types)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Human Readable Transaction types</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$types</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_transactionNo">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_transactionNo"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 270</div>
+        <code>        static            string
+    <strong>transactionNo</strong>(string $type, <abbr title="Carbon\Carbon">Carbon</abbr> $transaction_date = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>The next Transaction number for the transaction type and transaction_date.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Carbon\Carbon">Carbon</abbr></td>
+                <td>$transaction_date</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toString">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_toString"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 290</div>
+        <code>                    string
+    <strong>toString</strong>($type = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Instance Identifier.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_lineItems">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_lineItems"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 301</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr>
+    <strong>lineItems</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction Saved Line Items.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ledgers">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_ledgers"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 311</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr>
+    <strong>ledgers</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction Ledgers.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currency">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_currency"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 321</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr>
+    <strong>currency</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction Currency.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_account">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_account"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 331</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr>
+    <strong>account</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction Account.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exchangeRate">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_exchangeRate"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 341</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr>
+    <strong>exchangeRate</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction Exchange Rate.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\BelongsTo">BelongsTo</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_assignments">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_assignments"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 351</div>
+        <code>                    <abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr>
+    <strong>assignments</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction Assignments.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Database\Eloquent\Relations\HasMany">HasMany</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTypeAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getTypeAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 361</div>
+        <code>                    string
+    <strong>getTypeAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Instance Type Translator.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIsPostedAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getIsPostedAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 369</div>
+        <code>                    bool
+    <strong>getIsPostedAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>is_posted analog for Assignment model.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIsCreditedAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getIsCreditedAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 379</div>
+        <code>                    bool
+    <strong>getIsCreditedAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>is_credited analog for Assignment model.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClearedTypeAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getClearedTypeAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 389</div>
+        <code>                    string
+    <strong>getClearedTypeAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Cleared Object type.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAmountAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getAmountAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 399</div>
+        <code>                    float
+    <strong>getAmountAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>amount analog for Assignment model.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>float</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAssignableAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getAssignableAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 432</div>
+        <code>                    bool
+    <strong>getAssignableAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction is assignable predicate.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClearableAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getClearableAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 442</div>
+        <code>                    bool
+    <strong>getClearableAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction is clearable predicate.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDateAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getDateAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 452</div>
+        <code>                    string
+    <strong>getDateAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction date.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_attributes">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_attributes"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 462</div>
+        <code>                    object
+    <strong>attributes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transaction attributes.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLineItems">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getLineItems"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 472</div>
+        <code>                    array
+    <strong>getLineItems</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Transaction LineItems.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addLineItem">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_addLineItem"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 487</div>
+        <code>                    void
+    <strong>addLineItem</strong>(<a href="../../IFRS/Models/LineItem.html"><abbr title="IFRS\Models\LineItem">LineItem</abbr></a> $lineItem)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add LineItem to Transaction LineItems.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../IFRS/Models/LineItem.html"><abbr title="IFRS\Models\LineItem">LineItem</abbr></a></td>
+                <td>$lineItem</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeLineItem">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_removeLineItem"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 507</div>
+        <code>                    void
+    <strong>removeLineItem</strong>(<a href="../../IFRS/Models/LineItem.html"><abbr title="IFRS\Models\LineItem">LineItem</abbr></a> $lineItem)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Remove LineItem from Transaction LineItems.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../IFRS/Models/LineItem.html"><abbr title="IFRS\Models\LineItem">LineItem</abbr></a></td>
+                <td>$lineItem</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAssigned">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getAssigned"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 531</div>
+        <code>                    array
+    <strong>getAssigned</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get this Transaction's assigned Transactions.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addAssigned">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_addAssigned"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 541</div>
+        <code>                    void
+    <strong>addAssigned</strong>(array $toBeAssigned)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add Transaction to this Transaction's assigned Transactions.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$toBeAssigned</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_processAssigned">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_processAssigned"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 567</div>
+        <code>                    void
+    <strong>processAssigned</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create assignments for the assigned transactions being staged.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_save">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_save"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 586</div>
+        <code>                    bool
+    <strong>save</strong>(array $options = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Relate LineItems to Transaction.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_post">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_post"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 621</div>
+        <code>                    void
+    <strong>post</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Post Transaction to the Ledger.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_delete">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_delete"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 635</div>
+        <code>                    bool
+    <strong>delete</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check Transaction Relationships.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHasIntegrityAttribute">
+        <div class="location">in <a href="../../IFRS/Models/Transaction.html#method_getHasIntegrityAttribute"><abbr title="IFRS\Models\Transaction">Transaction</abbr></a> at         line 661</div>
+        <code>                    bool
+    <strong>getHasIntegrityAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check Transaction Integrity.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetch">
+        <div class="location">in <a href="../../IFRS/Traits/Fetching.html#method_fetch"><abbr title="IFRS\Traits\Fetching">Fetching</abbr></a> at         line 35</div>
+        <code>        static            <abbr title="Illuminate\Support\Collection">Collection</abbr>
+    <strong>fetch</strong>(<abbr title="Carbon\Carbon">Carbon</abbr> $startTime = null, <abbr title="Carbon\Carbon">Carbon</abbr> $endTime = null, <a href="../../IFRS/Models/Account.html"><abbr title="IFRS\Models\Account">Account</abbr></a> $account = null, <a href="../../IFRS/Models/Currency.html"><abbr title="IFRS\Models\Currency">Currency</abbr></a> $currency = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Fetch Transactions given the filters</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Carbon\Carbon">Carbon</abbr></td>
+                <td>$startTime</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Carbon\Carbon">Carbon</abbr></td>
+                <td>$endTime</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../IFRS/Models/Account.html"><abbr title="IFRS\Models\Account">Account</abbr></a></td>
+                <td>$account</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../IFRS/Models/Currency.html"><abbr title="IFRS\Models\Currency">Currency</abbr></a></td>
+                <td>$currency</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Support\Collection">Collection</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
