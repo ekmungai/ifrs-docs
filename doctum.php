@@ -1,6 +1,6 @@
 <?php
 
-use Sami\Sami;
+use Doctum\Doctum;
 use Symfony\Component\Finder\Finder;
 
 $iterator = Finder::create()
@@ -9,10 +9,9 @@ $iterator = Finder::create()
     ->in(__DIR__.'/../laravel-ifrs/src')
 ;
 
-return new Sami($iterator, [
-    'theme'                => 'default',
+return new Doctum($iterator, [
     'title'                => 'Eloquent IFRS API Documentation',
-    'build_dir'            => __DIR__.'/api',
-    'cache_dir'            => __DIR__.'/cache',
+    'build_dir'            => __DIR__.'/content/v7.1.0',
+    'cache_dir'            => __DIR__.'/cache/doctum',
     'default_opened_level' => 2,
 ]);

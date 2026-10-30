@@ -20,13 +20,13 @@ Accounts are records in the General Ledger that agreggate the transactions relat
 ### Methods
 + `Account::getType($type):` The human readable type name of the given account type. 
 + `Account::getTypes($types):` The human readable type names of the account types in the given array. 
-+ `Account::sectionBalances($types, $startDate, $endDate, $fullBalance):` Returns an array containing accounts of the given `$types` their opening, current and closing balances for the period between the `$startDate` and the `$endDate`, as well as the movement in the balance within the period. The array also includes the conbined total of the closing balances of all the accounts.
++ `Account::sectionBalances($types, $startDate, $endDate, $fullBalance):` Returns an array containing accounts of the given `$types` their opening, current and closing balances for the period between the `$startDate` and the `$endDate`, both of whose days are included, opening with the balances of the year `$startDate` falls in, as well as the movement in the balance within the period. The array also includes the conbined total of the closing balances of all the accounts.
 + `Account::openingBalances($year):` Returns an array containing accounts with opening balances for the given year, as well as the total debit and credit balances for the year.
 + `$account->openingBalance($year, $currencyId):` Retrieve the opening balance for the account for the given year for the (optionally) given currency. The year is the calendar year that the financial year starts in. (See [Reporting Periods]({{< relref "reporting-periods.md" >}})).
-+ `$account->isClosed($year):` Check if an account has been closed (Its foreign currency balances have been translated at the reporing period's closing rates). 
++ `$account->isClosed($year):` Check if an account has been closed (Its foreign currency balances have been translated at the reporing period's closing rates). Closing transactions belong to the reporting period they were prepared for, whatever their date, and deleting one reopens the account. 
 + `$account->closingTransactions($year):` The accounts transactions translating its foreign currency balances to the period's closing rate. 
-+ `$account->currentBalance($startDate, $endDate, $currencyId):` Retrieve the sum of transactions for the account for the period between the given dates for the (optionally) given currency. 
-+ `$account->closingBalance($endDate, $currencyId):` Retrieve the closing balance for the account as at the given date for the (optionally) given currency. 
++ `$account->currentBalance($startDate, $endDate, $currencyId):` Retrieve the sum of transactions for the account for the period between the given dates for the (optionally) given currency. All of `$endDate` is included. 
++ `$account->closingBalance($endDate, $currencyId):` Retrieve the closing balance for the account as at the end of the given date for the (optionally) given currency. 
 + `$account->transactionsQuery($startDate, $endDate, $currencyId):` Produce a query builder to retrieve all transactions posted to the account for the given period for the (optionally) given currency. 
 + `$account->getTransactions($startDate, $endDate):` Retrieve an array of all transactions posted to the account for the given period. 
 + `$account->attributes():` Presents the account's attributes as an object. Useful for debugging. 

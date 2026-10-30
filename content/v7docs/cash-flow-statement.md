@@ -6,9 +6,11 @@ weight: 24
 
 The Cash Flow Statement shows how the entity's cash balance moved over a period, by reconciling the profit for the period to the movement in its bank accounts across operating, investing and financing activities.
 
+The report covers exactly the period it is given, both of whose days are included, and it may span two financial years. Its profit is that of the period, not of the year to date, and it starts from the cash held at the close of the day before `$startDate`.
+
 ### Construction
 A CashFlowStatement constructor takes the following parameters:
-+ `$startDate`: The first date on which account balances should be included in the report. Defaults to the first day of the current reporting period.
++ `$startDate`: The first date on which account balances should be included in the report. Defaults to the first day of the reporting period of `$endDate`.
 + `$endDate`: The last date on which account balances should be included in the report. Defaults to the current date.
 + `$entity`: The Entity the report is for. Defaults to the entity of the logged in user.
 

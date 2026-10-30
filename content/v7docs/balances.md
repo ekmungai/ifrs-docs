@@ -33,6 +33,24 @@ Balances represent amounts on Balance Sheet accounts carried over from previous 
 + `$balance->toString():`The string representation of the Balance object instance. 
 + `$balance->attributes():` Presents the balance's attributes as an object. Useful for debugging.
 
+### Repairing Balances
+
+Before version 7.0, a Balance saved without a `reporting_period_id` could be attached to the next financial year. This affects entities whose `year_start` is not `1`, for Balances saved between January and the month before `year_start`. Such a Balance is missing from the reports of its own year, and appears in those of the year after.
+
+To list them, run:
+
+```php
+php artisan ifrs:repair-balances
+```
+
+Add `--entity=` to check a single Entity. Listing changes nothing. A Balance that was given that reporting period on purpose looks the same, so review the list before moving them:
+
+```php
+php artisan ifrs:repair-balances --apply
+```
+
+A Balance is left where it is, and shown as blocked, if either reporting period is closed or the year it belongs to has no reporting period.
+
 ### Constraints
 + `NegativeAmount`: Balance amounts cannot be negative. 
 + `InvalidBalanceTransaction`: Transaction type must be one of `Transaction::IN`, `Transaction::BL` or `Transaction::JN`. See [Transactions]({{< relref "transactions.md" >}}) for details of Transaction Types.

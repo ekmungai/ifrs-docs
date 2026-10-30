@@ -5,6 +5,6 @@ weight: 26
 heading: 'API Reference'
 ---
 
-The generated API reference has not been updated since version 5 of the Package, which can be found [here](/ifrs-docs/v5.0.0). Its method signatures may differ from version 7.
+The API reference for version 7.1 of the Package can be found [here](/ifrs-docs/v7.1.0).
 
 ***

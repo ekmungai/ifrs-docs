@@ -10,6 +10,16 @@ Pages live in `content/`, with one folder per major version. Change the folder o
 
 To start a new version, copy the latest folder, add it to the menu in `config.toml` and point `homepage_button_link` at it.
 
+## API reference
+
+The API reference is generated from a release tag by [Doctum](https://github.com/code-lts/doctum), into a `content/v<version>` folder. With the tag checked out in `../laravel-ifrs`, and `build_dir` in `doctum.php` set to the version:
+
+```bash
+php doctum.phar update doctum.php
+```
+
+Then point `content/v7docs/api.md` at the new folder.
+
 ## Publishing
 
 Build with Hugo 0.104 extended, into a checkout of `master`:

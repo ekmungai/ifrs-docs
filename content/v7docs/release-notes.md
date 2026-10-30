@@ -5,6 +5,8 @@ weight: 1
 heading: 'Prologue'
 ---
 
+Eloquent-IFRS 7.1 makes reports honour their dates, and adds a command to repair Balances attached to the wrong year. See [Upgrading to 7.1]({{< relref "#upgrading-to-71" >}}).
+
 Eloquent-IFRS 7.0 corrects the balances of entities whose financial year does not start in January, stores exchange rates with a configurable precision, stops the package creating or owning the application's users table, and declares nullable parameters explicitly so that it loads without deprecation notices on PHP 8.4 and above.
 
 Version 6.0, which had no documentation of its own, added Laravel 13 and raised the minimum requirements. If you are upgrading from version 5, read its changes below as well.
@@ -21,7 +23,7 @@ Update your `ekmungai/eloquent-ifrs` dependency to ^7.0 in your `composer.json` 
 
 If your entity's `year_start` is not `1`, reports from earlier versions were wrong, and the same data will now give different figures. A year was resolved from its 1 January, which belongs to the previous financial year, so opening balances were read from the wrong reporting period and usually came back as zero. `$account->openingBalance()`, `closingBalance()`, the Balance Sheet, Trial Balance and Account Statement were all affected. Compare your reports after upgrading.
 
-`$entity->currentReportingPeriod` now follows `year_start` too. Between January and the month before `year_start`, it returns the period that started the previous calendar year, where it used to return, or create, a period for the current calendar year. Look for periods created that way, and for transactions or balances attached to them.
+`$entity->currentReportingPeriod` now follows `year_start` too. Between January and the month before `year_start`, it returns the period that started the previous calendar year, where it used to return, or create, a period for the current calendar year. Transactions were not affected, but Balances saved in those months without an explicit period were attached to the next financial year. See [Repairing Balances]({{< relref "balances.md#repairing-balances" >}}).
 
 Account Statements now open with everything posted before `$startDate` in the year, not only the opening balance for the year. Passing a currency to `$account->openingBalance()` now returns that year's balance rather than the sum of every year's.
 
@@ -38,6 +40,19 @@ Rates are now stored with `forex_scale` decimal places. The default of `4` chang
 + Zero rated Vat - Posting a Line Item with a zero rated Vat no longer fails. It posts no Vat ledger entries.
 + Reporting Period - Add `ReportingPeriod::yearStart()`.
 + Recycled objects - The `user_id` column now matches the type of the users table's primary key, and `recyclable_id` is always a big integer.
+
+### Upgrading to 7.1
+
+Update your `ekmungai/eloquent-ifrs` dependency to ^7.1 in your `composer.json` file. There are no breaking changes to the API and no migrations, but reported figures change.
+
++ Cash Flow Statement - It now honours its dates, where it always covered the current year, and it may span two financial years. Its profit is that of the period rather than the year to date.
++ End dates - `$account->currentBalance()`, `closingBalance()`, `Account::sectionBalances()` and `$category->getAccountBalances()` include the whole of the end date. Transactions later than midnight on that day were left out, by default including the last day of the year.
++ Start dates - `Account::sectionBalances()` counts a transaction on the start date once, and opens with the balances of the year it starts in.
++ Closing Transactions - They now belong to the reporting period they were prepared for, whatever their date, and deleted ones are ignored. An account reopens when its closing transaction is deleted.
+
+Closing Transactions that versions before 7.0 stored with the wrong date are now recognised, so they are not duplicated, but they are not repaired. Reversing a posted one is a decision for the entity's accountant.
+
+If your entity's `year_start` is not `1`, run `php artisan ifrs:repair-balances`. See [Repairing Balances]({{< relref "balances.md#repairing-balances" >}}).
 
 ### Upgrading from Version 5 to 6
 

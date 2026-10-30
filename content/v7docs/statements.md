@@ -11,8 +11,8 @@ Account Statements are chronological records of transactions that have been post
 An AccountStatement constructor takes the following parameters:
 + `$accountId`: The Id of the Account object whose statement is being constructed.
 + `$currencyId`: The Id of the currency of the transactions to be included in the statement. Defaults to the Id of the reporting currency of the entity of the logged in user.
-+ `$startDate`: The first date on which transactions posted to the account should be included in the statement. Defaults to the first day of the current reporting period for the entity of the logged in user.
-+ `$endDate`: The last date on which transactions posted to the account should be included in the statement. Defaults to the current date.
++ `$startDate`: The first date on which transactions posted to the account should be included in the statement, from the start of that day. Defaults to the first day of the current reporting period for the entity of the logged in user.
++ `$endDate`: The last date on which transactions posted to the account should be included in the statement, to the end of that day. Defaults to the current date.
 
 ### Attributes
 + `$statement->account`: The Account object associated with the statement.
