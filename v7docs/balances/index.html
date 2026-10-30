@@ -337,6 +337,13 @@
 <li><code>$balance-&gt;toString():</code>The string representation of the Balance object instance.</li>
 <li><code>$balance-&gt;attributes():</code> Presents the balance&rsquo;s attributes as an object. Useful for debugging.</li>
 </ul>
+<h3 id="repairing-balances">Repairing Balances</h3>
+<p>Before version 7.0, a Balance saved without a <code>reporting_period_id</code> could be attached to the next financial year. This affects entities whose <code>year_start</code> is not <code>1</code>, for Balances saved between January and the month before <code>year_start</code>. Such a Balance is missing from the reports of its own year, and appears in those of the year after.</p>
+<p>To list them, run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">ifrs</span><span class="o">:</span><span class="nx">repair</span><span class="o">-</span><span class="nx">balances</span>
+</span></span></code></pre></div><p>Add <code>--entity=</code> to check a single Entity. Listing changes nothing. A Balance that was given that reporting period on purpose looks the same, so review the list before moving them:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">ifrs</span><span class="o">:</span><span class="nx">repair</span><span class="o">-</span><span class="nx">balances</span> <span class="o">--</span><span class="nx">apply</span>
+</span></span></code></pre></div><p>A Balance is left where it is, and shown as blocked, if either reporting period is closed or the year it belongs to has no reporting period.</p>
 <h3 id="constraints">Constraints</h3>
 <ul>
 <li><code>NegativeAmount</code>: Balance amounts cannot be negative.</li>

@@ -307,10 +307,11 @@
 <h1 class="title">Cash Flow Statement</h1>
 <div class="content ">
   <p>The Cash Flow Statement shows how the entity&rsquo;s cash balance moved over a period, by reconciling the profit for the period to the movement in its bank accounts across operating, investing and financing activities.</p>
+<p>The report covers exactly the period it is given, both of whose days are included, and it may span two financial years. Its profit is that of the period, not of the year to date, and it starts from the cash held at the close of the day before <code>$startDate</code>.</p>
 <h3 id="construction">Construction</h3>
 <p>A CashFlowStatement constructor takes the following parameters:</p>
 <ul>
-<li><code>$startDate</code>: The first date on which account balances should be included in the report. Defaults to the first day of the current reporting period.</li>
+<li><code>$startDate</code>: The first date on which account balances should be included in the report. Defaults to the first day of the reporting period of <code>$endDate</code>.</li>
 <li><code>$endDate</code>: The last date on which account balances should be included in the report. Defaults to the current date.</li>
 <li><code>$entity</code>: The Entity the report is for. Defaults to the entity of the logged in user.</li>
 </ul>

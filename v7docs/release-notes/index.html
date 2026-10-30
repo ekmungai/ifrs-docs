@@ -306,7 +306,8 @@
           
 <h1 class="title">Release Notes</h1>
 <div class="content ">
-  <p>Eloquent-IFRS 7.0 corrects the balances of entities whose financial year does not start in January, stores exchange rates with a configurable precision, stops the package creating or owning the application&rsquo;s users table, and declares nullable parameters explicitly so that it loads without deprecation notices on PHP 8.4 and above.</p>
+  <p>Eloquent-IFRS 7.1 makes reports honour their dates, and adds a command to repair Balances attached to the wrong year. See <a href="#upgrading-to-71">Upgrading to 7.1</a>.</p>
+<p>Eloquent-IFRS 7.0 corrects the balances of entities whose financial year does not start in January, stores exchange rates with a configurable precision, stops the package creating or owning the application&rsquo;s users table, and declares nullable parameters explicitly so that it loads without deprecation notices on PHP 8.4 and above.</p>
 <p>Version 6.0, which had no documentation of its own, added Laravel 13 and raised the minimum requirements. If you are upgrading from version 5, read its changes below as well.</p>
 <h3 id="versioning-scheme">Versioning Scheme</h3>
 <p>Like Laravel, Eloquent-IFRS follows <a href="https://semver.org">Semantic Versioning</a>. This means that only Major releases introduce breaking changes to the package.</p>
@@ -314,7 +315,7 @@
 <p>Update your <code>ekmungai/eloquent-ifrs</code> dependency to ^7.0 in your <code>composer.json</code> file.</p>
 <h4 id="reported-figures-change">Reported figures change</h4>
 <p>If your entity&rsquo;s <code>year_start</code> is not <code>1</code>, reports from earlier versions were wrong, and the same data will now give different figures. A year was resolved from its 1 January, which belongs to the previous financial year, so opening balances were read from the wrong reporting period and usually came back as zero. <code>$account-&gt;openingBalance()</code>, <code>closingBalance()</code>, the Balance Sheet, Trial Balance and Account Statement were all affected. Compare your reports after upgrading.</p>
-<p><code>$entity-&gt;currentReportingPeriod</code> now follows <code>year_start</code> too. Between January and the month before <code>year_start</code>, it returns the period that started the previous calendar year, where it used to return, or create, a period for the current calendar year. Look for periods created that way, and for transactions or balances attached to them.</p>
+<p><code>$entity-&gt;currentReportingPeriod</code> now follows <code>year_start</code> too. Between January and the month before <code>year_start</code>, it returns the period that started the previous calendar year, where it used to return, or create, a period for the current calendar year. Transactions were not affected, but Balances saved in those months without an explicit period were attached to the next financial year. See <a href="/ifrs-docs/v7docs/balances/#repairing-balances">Repairing Balances</a>.</p>
 <p>Account Statements now open with everything posted before <code>$startDate</code> in the year, not only the opening balance for the year. Passing a currency to <code>$account-&gt;openingBalance()</code> now returns that year&rsquo;s balance rather than the sum of every year&rsquo;s.</p>
 <h4 id="breaking-changes">Breaking changes</h4>
 <ul>
@@ -329,6 +330,16 @@
 <li>Reporting Period - Add <code>ReportingPeriod::yearStart()</code>.</li>
 <li>Recycled objects - The <code>user_id</code> column now matches the type of the users table&rsquo;s primary key, and <code>recyclable_id</code> is always a big integer.</li>
 </ul>
+<h3 id="upgrading-to-71">Upgrading to 7.1</h3>
+<p>Update your <code>ekmungai/eloquent-ifrs</code> dependency to ^7.1 in your <code>composer.json</code> file. There are no breaking changes to the API and no migrations, but reported figures change.</p>
+<ul>
+<li>Cash Flow Statement - It now honours its dates, where it always covered the current year, and it may span two financial years. Its profit is that of the period rather than the year to date.</li>
+<li>End dates - <code>$account-&gt;currentBalance()</code>, <code>closingBalance()</code>, <code>Account::sectionBalances()</code> and <code>$category-&gt;getAccountBalances()</code> include the whole of the end date. Transactions later than midnight on that day were left out, by default including the last day of the year.</li>
+<li>Start dates - <code>Account::sectionBalances()</code> counts a transaction on the start date once, and opens with the balances of the year it starts in.</li>
+<li>Closing Transactions - They now belong to the reporting period they were prepared for, whatever their date, and deleted ones are ignored. An account reopens when its closing transaction is deleted.</li>
+</ul>
+<p>Closing Transactions that versions before 7.0 stored with the wrong date are now recognised, so they are not duplicated, but they are not repaired. Reversing a posted one is a decision for the entity&rsquo;s accountant.</p>
+<p>If your entity&rsquo;s <code>year_start</code> is not <code>1</code>, run <code>php artisan ifrs:repair-balances</code>. See <a href="/ifrs-docs/v7docs/balances/#repairing-balances">Repairing Balances</a>.</p>
 <h3 id="upgrading-from-version-5-to-6">Upgrading from Version 5 to 6</h3>
 <ul>
 <li>PHP - The minimum version is now 8.2.</li>
